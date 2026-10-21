@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FC Stella Azzurra</title>
 <meta name="description" content="FC Stella Azzurra, Fussballverein aus Gümligen seit 1972. 4. Liga FVBJ, Senioren 40+, Sportzentrum Füllerich.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout: club-site grammar. Crest-led header, photo hero with an overlapping matchday card, then bands that alternate white / royal blue. The crest's vertical stripes are the one recurring motif. */
 :root {
@@ -116,6 +114,11 @@ nav.links a:hover { color: #fff; border-bottom-color: var(--azzurro); }
 .mtop { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
 .pill { font: 700 .75rem/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; padding: 7px 10px; border-radius: 3px; background: var(--royal); color: #fff; }
 .pill.away { background: var(--muted); }
+.pill.live { background: var(--rosso); display: inline-flex; align-items: center; gap: 7px; }
+.pill.live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+.upnext .sep { color: var(--line); }
+.livebtn { padding: 12px 18px; font-size: .85rem; }
 .mdate { font: 600 .95rem/1.3 var(--f-body); color: var(--muted); font-variant-numeric: tabular-nums; }
 .versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
 .team { display: flex; align-items: center; gap: 12px; font: 800 clamp(1.3rem, 2.6vw, 1.9rem)/1 var(--f-display); text-transform: uppercase; min-width: 0; }
@@ -425,12 +428,13 @@ footer nav a:hover { color: var(--azzurro); }
           </div>
           <div class="cdrow">
             <div class="mplace"><svg><use href="#pin"/></svg><span id="mPlace">Sportzentrum Füllerich, Platz 1, Gümligen</span></div>
+            <a class="btn btn-royal livebtn" id="liveBtn" hidden target="_blank" rel="noopener" href="#">Live-Resultat im Matchcenter</a>
             <div class="countdown" id="countdown" aria-label="Zeit bis zum Anpfiff"><div><b id="cdD">–</b><span>Tage</span></div><div><b id="cdH">–</b><span>Std</span></div><div><b id="cdM">–</b><span>Min</span></div><div><b id="cdS">–</b><span>Sek</span></div></div>
           </div>
-          <div class="upnext" id="upnext"><span>Danach:</span> <b>Mi 28.10. · 19:30</b> <span>FC Rubigen – FC Stella Azzurra, Senioren 40+</span></div>
+          <div class="upnext" id="upnext"><span>Danach:</span> <b>Mi 28.10. · 19:30</b> <span>FC Rubigen – FC Stella Azzurra, Senioren 40+, Gruppe 3</span></div>
         </div>
         <div class="matchlinks">
-          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener"><div><b>Resultate &amp; Spielplan</b><span>Alle Spiele im FVBJ-Matchcenter</span></div><svg><use href="#ext"/></svg></a>
+          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" data-mc="4. Liga" target="_blank" rel="noopener"><div><b>Resultate &amp; Spielplan</b><span>Alle Spiele im FVBJ-Matchcenter</span></div><svg><use href="#ext"/></svg></a>
           <a href="#teams"><div><b>Tabellen</b><span>4. Liga &amp; Senioren 40+</span></div><svg><use href="#arrow"/></svg></a>
           <a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener"><div><b>Matchday-Updates</b><span>Live auf Instagram</span></div><svg><use href="#ig"/></svg></a>
         </div>
@@ -446,7 +450,7 @@ footer nav a:hover { color: var(--azzurro); }
         <div><p class="kicker">Neu auf Instagram</p><h2>News</h2></div>
         <a class="more" href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Alle Beiträge <svg><use href="#arrow"/></svg></a>
       </div>
-      <div class="rv reels">
+      <div class="rv reels" id="reels">
         <a class="reel" href="https://www.instagram.com/p/DekTk7RRyTh/" target="_blank" rel="noopener">
           <div class="cover"><img src="img/ig/DekTk7RRyTh.jpg" alt="Reel: Spieler mit Mikrofon unter Flutlicht" loading="lazy"><span class="pill tag">Matchday</span></div>
           <h3>Morgen editieren wir die Tabelle</h3>
@@ -486,12 +490,12 @@ footer nav a:hover { color: var(--azzurro); }
         <div><p class="kicker">Live im FVBJ-Matchcenter</p><h2>Teams &amp; Tabellen</h2></div>
       </div>
       <div class="rv tables">
-        <a class="ttile photo" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener" aria-label="Tabelle und Spiele 4. Liga im FVBJ-Matchcenter öffnen">
+        <a class="ttile photo" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" data-mc="4. Liga" target="_blank" rel="noopener" aria-label="Tabelle und Spiele 4. Liga im FVBJ-Matchcenter öffnen">
           <img class="bgimg" src="img/team.jpg" alt="" loading="lazy">
           <div><small>Erste Mannschaft</small><h3>4. Liga<br>Gruppe 4</h3><p>Tabelle, Resultate und Spielplan</p></div>
           <span class="go"><svg><use href="#arrow"/></svg></span>
         </a>
-        <a class="ttile alt" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" target="_blank" rel="noopener" aria-label="Tabelle und Spiele Senioren 40+ im FVBJ-Matchcenter öffnen">
+        <a class="ttile alt" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" data-mc="Senioren 40+" target="_blank" rel="noopener" aria-label="Tabelle und Spiele Senioren 40+ im FVBJ-Matchcenter öffnen">
           <div class="rows" aria-hidden="true"><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
           <div><small>Senioren 40+ · Foto folgt</small><h3>40+<br>Gruppe 3</h3><p>Tabelle, Resultate und Spielplan</p></div>
           <span class="go"><svg><use href="#arrow"/></svg></span>
@@ -504,7 +508,7 @@ footer nav a:hover { color: var(--azzurro); }
     <div class="wrap">
       <div class="sec-head rv">
         <div><p class="kicker">Kader 2026/27</p><h2>Erste Mannschaft</h2></div>
-        <a class="more" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener">4. Liga, Gruppe 4 <svg><use href="#arrow"/></svg></a>
+        <a class="more" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" data-mc="4. Liga" target="_blank" rel="noopener">4. Liga, Gruppe 4 <svg><use href="#arrow"/></svg></a>
       </div>
       <button class="groupshot" id="groupshot" aria-label="Mannschaftsfoto gross anzeigen">
         <img src="img/team.jpg" alt="Mannschaftsfoto der ersten Mannschaft" loading="lazy">
@@ -606,7 +610,7 @@ footer nav a:hover { color: var(--azzurro); }
     <svg class="fcrest" aria-hidden="true"><use href="#crest"/></svg>
     <div>
       <b>FC Stella Azzurra</b>
-      <small>Hofackerweg 16a · Postfach 233 · 3073 Gümligen<br>Mitglied FVBJ · Kreisverband MFV · © 2026</small>
+      <small>Hofackerweg 16a · Postfach 233 · 3073 Gümligen<br>Mitglied FVBJ · Kreisverband MFV · © 2026 · <a href="impressum.html" style="color:inherit">Impressum &amp; Datenschutz</a></small>
     </div>
     <nav aria-label="Fusszeile">
       <a href="#spiele">Spiele</a><a href="#news">News</a><a href="#teams">Tabellen</a><a href="#kader">Kader</a><a href="#sponsoren">Sponsoren</a><a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Instagram</a>
@@ -623,129 +627,186 @@ footer nav a:hover { color: var(--azzurro); }
 
 <script>
 (function () {
-  /* ---------- Spielplan: hier neue Spiele eintragen ---------- */
-  var FIXTURES = [
-    { date: "2026-10-25T11:00", home: "FC Stella Azzurra", away: "FC Galicia", comp: "4. Liga, Gruppe 4", place: "Sportzentrum Füllerich, Platz 1, Gümligen" },
-    { date: "2026-10-28T19:30", home: "FC Rubigen", away: "FC Stella Azzurra", comp: "Senioren 40+, Gruppe 3", place: "Hunzigenrüti, Hauptplatz, Rubigen" }
-  ];
-
-  /* ---------- Sponsoren: [Name, Website, Logo in img/sp/ (oder null = Schriftzug), Zusatz, Hintergrund für helle Logos] ---------- */
-  var SPONSORS = {
-    s: [
-      ["Groupe Egli", "https://groupe-egli.ch/", "egli.svg"],
-      ["R4 Raumwelten AG", "https://www.r-4.ch/", "r4.png", "Raumwelten"],
-      ["Schönisol AG", "https://www.schoenisol.ch/", "schoenisol.png", null, "#1d2026"],
-      ["Art-Böden AG", "https://www.art-boeden.ch/", "artboeden.png"],
-      ["Gerber AG", "https://gerberelektro.ch/", "gerber.png", "Elektro- & Energietechnik"],
-      ["Sanare", "https://www.sanare.ch/", "sanare.png"],
-      ["appliedtec GmbH", "https://www.appliedtec.ch", null, "Database Engineering"],
-      ["PGTech AG", "https://www.pgtech.ch/", "pgtech.png"],
-      ["L'Osteria Belp", "https://www.losteriabelp.ch/", "osteria.png"],
-      ["Mundiger Pizza & Burger Huus", "https://mundigerhuus.ch/", "mundiger.png", null, "#141414"],
-      ["Seeland Job AG", "https://www.seelandjob.ch/de/", "seeland.png"],
-      ["Piazza Vittoria", "https://www.piazzavittoria.ch", "piazza.png"],
-      ["Kebap King", "https://kebap-king.ch/", "kebapking.png"],
-      ["Zigerlig Bautrocknung AG", "https://www.zigerlig.ch/", "zigerlig.png"],
-      ["Ristorante Beau Rivage", "https://beau-rivage-thun.ch/", "beaurivage.png"]
-    ],
-    c: [
-      ["Restaurant National La Favorita", "https://www.restaurant-favorita.ch", "favorita.png", null, "#1b1b1b"],
-      ["Frimasa Kaminbau GmbH", "https://frimasa.ch/", "frimasa.png"],
-      ["Gesundheitspraxis Ursula Merz", "https://www.ursulamerz.ch", "merz.png"],
-      ["Reimal AG", "https://reimal.ch", "reimal.png"]
-    ],
-    p: [
-      ["Intersport Friedrich", "https://www.friedrich-sport.ch/", "friedrich.png"]
-    ]
-  };
-
+  /* Die Inhalte (Spiele, Spieler, Sponsoren, News) kommen aus dem Ordner data/
+     und werden über die Admin-Oberfläche (Pages CMS) gepflegt. */
+  var STELLA = "FC Stella Azzurra";
+  var COMP = { "4. Liga": "4. Liga, Gruppe 4", "Senioren 40+": "Senioren 40+, Gruppe 3" };
   var DAYS = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  var LIVE_MS = 2 * 60 * 60 * 1000;
+  var MC = {
+    "4. Liga": "https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&oid=6&lng=1&a=rr",
+    "Senioren 40+": "https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&oid=6&lng=1&t=36923&a=trr"
+  };
   function pad(n) { return n < 10 ? "0" + n : "" + n; }
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function src(p) { return String(p || "").replace(/^\/+/, ""); }
+  function getJSON(u) { return fetch(u, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); }); }
+  function fmtDay(d) { return DAYS[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."; }
+  function fmtTime(d) { return pad(d.getHours()) + ":" + pad(d.getMinutes()); }
 
-  // Next match: first fixture that hasn't kicked off yet
-  var now = new Date();
-  var upcoming = FIXTURES.filter(function (f) { return new Date(f.date) > now; });
+  /* ---------- Spiele ---------- */
   var crestSvg = '<svg><use href="#crest"/></svg>';
-  function side(name) { return name === "FC Stella Azzurra" ? crestSvg + "<span>Stella Azzurra</span>" : "<span>" + esc(name) + '</span><span class="ph">' + esc(name.replace(/^FC\s+/, "").charAt(0)) + "</span>"; }
-  function sideL(name) { return name === "FC Stella Azzurra" ? crestSvg + "<span>Stella Azzurra</span>" : '<span class="ph">' + esc(name.replace(/^FC\s+/, "").charAt(0)) + "</span><span>" + esc(name) + "</span>"; }
-  if (upcoming.length) {
-    var f = upcoming[0], d = new Date(f.date), home = f.home === "FC Stella Azzurra";
-    document.getElementById("mPill").textContent = home ? "Heimspiel" : "Auswärts";
-    document.getElementById("mPill").className = "pill" + (home ? "" : " away");
-    document.getElementById("mDate").textContent = DAYS[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "." + d.getFullYear() + " · " + f.comp;
-    document.getElementById("mKick").innerHTML = pad(d.getHours()) + ":" + pad(d.getMinutes()) + "<small>Anpfiff</small>";
-    document.getElementById("mHome").innerHTML = sideL(f.home);
-    document.getElementById("mAway").innerHTML = side(f.away);
-    document.getElementById("mPlace").textContent = f.place;
-    var n = upcoming[1], un = document.getElementById("upnext");
-    if (n) { var nd = new Date(n.date); un.innerHTML = "<span>Danach:</span> <b>" + DAYS[nd.getDay()] + " " + pad(nd.getDate()) + "." + pad(nd.getMonth() + 1) + ". · " + pad(nd.getHours()) + ":" + pad(nd.getMinutes()) + "</b> <span>" + esc(n.home) + " – " + esc(n.away) + ", " + esc(n.comp) + "</span>"; }
-    else un.hidden = true;
-  } else {
-    document.getElementById("nextmatch").innerHTML = '<div class="mtop"><span class="pill">Spielplan</span></div><div class="team">Nächste Spiele auf football.ch</div><p class="mplace" style="margin:0">Die kommenden Termine findest du rechts im Spielplan.</p>';
+  function initial(name) { return esc(name.replace(/^(FC|SC|SV|FFC)\s+/i, "").charAt(0)); }
+  function sideL(name) { return name === STELLA ? crestSvg + "<span>Stella Azzurra</span>" : '<span class="ph">' + initial(name) + "</span><span>" + esc(name) + "</span>"; }
+  function sideR(name) { return name === STELLA ? crestSvg + "<span>Stella Azzurra</span>" : "<span>" + esc(name) + '</span><span class="ph">' + initial(name) + "</span>"; }
+  function toMatch(s) {
+    var home = s.heimspiel ? STELLA : s.gegner, away = s.heimspiel ? s.gegner : STELLA;
+    return { d: new Date(s.datum), home: home, away: away, isHome: !!s.heimspiel, team: s.team, comp: COMP[s.team] || s.team, place: s.ort || "", score: (s.resultat || "").trim() };
+  }
+  var cdTimer = null;
+  function renderMatches(list) {
+    var now = Date.now();
+    var ms = list.filter(function (s) { return s && s.datum && s.gegner; }).map(toMatch)
+      .filter(function (m) { return !isNaN(m.d); }).sort(function (a, b) { return a.d - b.d; });
+    var live = ms.filter(function (m) { return !m.score && m.d <= now && now < m.d.getTime() + LIVE_MS; })[0];
+    var upcoming = ms.filter(function (m) { return m.d > now; });
+    var played = ms.filter(function (m) { return m.score; });
+    var last = played[played.length - 1];
+    var main = live || upcoming[0];
+    var box = document.getElementById("nextmatch");
+    if (!main) {
+      box.innerHTML = '<div class="mtop"><span class="pill">Spielplan</span></div><div class="team">Neue Spiele folgen</div>' +
+        (last ? '<div class="upnext"><span>Letztes Spiel:</span> <b>' + fmtDay(last.d) + "</b> <span>" + esc(last.home) + " " + esc(last.score) + " " + esc(last.away) + "</span></div>" : "") +
+        '<p class="mplace" style="margin:0">Alle Termine findest du im FVBJ-Matchcenter.</p>';
+      return;
+    }
+    var pill = document.getElementById("mPill");
+    pill.textContent = live ? "Live" : (main.isHome ? "Heimspiel" : "Auswärts");
+    pill.className = "pill" + (live ? " live" : main.isHome ? "" : " away");
+    document.getElementById("mDate").textContent = fmtDay(main.d) + main.d.getFullYear() + " · " + main.comp;
+    document.getElementById("mKick").innerHTML = fmtTime(main.d) + "<small>Anpfiff</small>";
+    document.getElementById("mHome").innerHTML = sideL(main.home);
+    document.getElementById("mAway").innerHTML = sideR(main.away);
+    document.getElementById("mPlace").textContent = main.place;
+    var cd = document.getElementById("countdown"), liveBtn = document.getElementById("liveBtn");
+    if (live) {
+      cd.hidden = true; liveBtn.hidden = false; liveBtn.href = MC[main.team] || MC["4. Liga"];
+    } else {
+      cd.hidden = false; liveBtn.hidden = true;
+      var ko = main.d.getTime(), els = ["cdD", "cdH", "cdM", "cdS"].map(function (id) { return document.getElementById(id); });
+      clearTimeout(cdTimer);
+      (function tick() {
+        var left = Math.max(0, ko - Date.now()), t = Math.floor(left / 1000);
+        var v = [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60];
+        els.forEach(function (el, i) { el.textContent = i ? pad(v[i]) : v[i]; });
+        if (left > 0) cdTimer = setTimeout(tick, 1000);
+        else renderMatches(list);
+      })();
+    }
+    var parts = [];
+    if (last) parts.push("<span>Letztes Spiel:</span> <b>" + fmtDay(last.d) + "</b> <span>" + esc(last.home) + " <b>" + esc(last.score) + "</b> " + esc(last.away) + "</span>");
+    var after = upcoming.filter(function (m) { return m !== main; })[0];
+    if (after) parts.push("<span>Danach:</span> <b>" + fmtDay(after.d) + " · " + fmtTime(after.d) + "</b> <span>" + esc(after.home) + " – " + esc(after.away) + ", " + esc(after.comp) + "</span>");
+    var un = document.getElementById("upnext");
+    un.innerHTML = parts.join('<span class="sep" aria-hidden="true">·</span>');
+    un.hidden = !parts.length;
   }
 
-  // Sponsors
+  /* ---------- Sponsoren ---------- */
+  var TIER = { "Sponsor": "S", "Co-Sponsor": "C", "Partner": "P" };
   function logoInner(sp, inMarquee) {
-    if (!sp[2]) return '<span class="wm">' + esc(sp[0]) + (sp[3] && !inMarquee ? "<small>" + esc(sp[3]) + "</small>" : "") + "</span>";
-    var img = '<img src="img/sp/' + sp[2] + '" alt="' + esc(sp[0]) + '" loading="lazy">';
-    if (sp[2] === "gerber.png" || sp[2] === "r4.png") return '<span class="combo">' + img + '<span class="wm" style="text-align:left">' + esc(sp[0].replace(" Raumwelten AG", "")) + (sp[3] && !inMarquee ? "<small>" + esc(sp[3]) + "</small>" : "") + "</span></span>";
+    var sub = sp.zusatz && !inMarquee ? "<small>" + esc(sp.zusatz) + "</small>" : "";
+    if (!sp.logo) return '<span class="wm">' + esc(sp.name) + sub + "</span>";
+    var img = '<img src="' + esc(src(sp.logo)) + '" alt="' + esc(sp.name) + '" loading="lazy">';
+    if (sp.zusatz) return '<span class="combo">' + img + '<span class="wm" style="text-align:left">' + esc(sp.name.replace(/ Raumwelten AG$/, "")) + sub + "</span></span>";
     return img;
   }
   function logoLink(sp, inMarquee) {
-    var a = document.createElement("a");
-    a.className = inMarquee ? "" : "logo"; a.href = sp[1]; a.target = "_blank"; a.rel = "noopener"; a.title = sp[0];
-    if (sp[4]) { a.classList.add("dark"); a.style.background = sp[4]; }
+    var a = document.createElement(sp.website ? "a" : "span");
+    if (!inMarquee) a.className = "logo";
+    if (sp.website) { a.href = sp.website; a.target = "_blank"; a.rel = "noopener"; }
+    a.title = sp.name;
+    if (sp.hintergrund) { a.classList.add("dark"); a.style.background = sp.hintergrund; }
     a.innerHTML = logoInner(sp, inMarquee);
     return a;
   }
-  var mq = document.getElementById("marquee"), allSp = SPONSORS.s.concat(SPONSORS.c, SPONSORS.p);
-  Object.keys(SPONSORS).forEach(function (tier) {
-    var el = document.getElementById("logos" + tier.toUpperCase());
-    SPONSORS[tier].forEach(function (sp) { el.appendChild(logoLink(sp)); });
-  });
-  [0, 1].forEach(function (copy) {
-    allSp.forEach(function (sp) { var a = logoLink(sp, true); if (copy) a.tabIndex = -1; mq.appendChild(a); });
-  });
+  function renderSponsors(list) {
+    ["S", "C", "P"].forEach(function (t) { document.getElementById("logos" + t).innerHTML = ""; });
+    var mq = document.getElementById("marquee"); mq.innerHTML = "";
+    list.forEach(function (sp) {
+      var el = document.getElementById("logos" + (TIER[sp.stufe] || "S"));
+      el.appendChild(logoLink(sp));
+    });
+    [0, 1].forEach(function (copy) {
+      list.forEach(function (sp) { var a = logoLink(sp, true); if (copy) a.tabIndex = -1; mq.appendChild(a); });
+    });
+    ["C", "P"].forEach(function (t) {
+      var el = document.getElementById("logos" + t);
+      el.hidden = el.previousElementSibling.hidden = !el.children.length;
+    });
+  }
 
-  // Squad
-  var staff = ["img/p-12.jpg", "img/p-27.jpg"], players = [];
-  for (var i = 5; i <= 28; i++) { var src = "img/p-" + pad(i) + ".jpg"; if (staff.indexOf(src) < 0) players.push(src); }
-  function pcard(src, label, sub, num, list, idx, cls) {
-    var b = document.createElement("button");
-    b.className = "pcard" + (cls ? " " + cls : ""); b.type = "button";
-    b.setAttribute("aria-label", label + ", Foto gross anzeigen");
-    b.innerHTML = '<div class="ph"><img src="' + src + '" alt="' + label + '" loading="lazy" decoding="async">' + (num ? '<span class="num">' + num + "</span>" : "") + '</div><div class="info"><b>' + label + "</b><span>" + sub + "</span></div>";
+  /* ---------- Kader ---------- */
+  function pcard(p, list, idx) {
+    var b = document.createElement("button"), staff = p.rolle === "Trainer";
+    var name = p.name || "Name folgt";
+    var sub = p.position || (staff ? "Trainerstab" : "Position folgt");
+    b.className = "pcard" + (staff ? " staff" : ""); b.type = "button";
+    b.setAttribute("aria-label", name + ", Foto gross anzeigen");
+    b.innerHTML = '<div class="ph"><img src="' + esc(src(p.foto)) + '" alt="' + esc(name) + '" loading="lazy" decoding="async">' +
+      (p.nummer ? '<span class="num">' + esc(p.nummer) + "</span>" : "") +
+      '</div><div class="info"><b>' + esc(name) + "</b><span>" + esc(sub) + "</span></div>";
     b.addEventListener("click", function () { openLb(list, idx); });
     return b;
   }
-  var stEl = document.getElementById("staff");
-  staff.forEach(function (s, i) { stEl.appendChild(pcard(s, "Name folgt", "Trainerstab", "", staff, i, "staff")); });
-  var sqEl = document.getElementById("squad");
-  players.forEach(function (s, i) { sqEl.appendChild(pcard(s, "Name folgt", "Position folgt", "", players, i)); });
-
-  // Countdown to kick-off
-  if (upcoming.length) {
-    var ko = new Date(upcoming[0].date).getTime();
-    var cdEls = ["cdD", "cdH", "cdM", "cdS"].map(function (id) { return document.getElementById(id); });
-    (function tick() {
-      var ms = Math.max(0, ko - Date.now()), t = Math.floor(ms / 1000);
-      var v = [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60];
-      cdEls.forEach(function (el, i) { el.textContent = i ? pad(v[i]) : v[i]; });
-      if (ms > 0) setTimeout(tick, 1000);
-    })();
-  } else { var cdx = document.getElementById("countdown"); if (cdx) cdx.hidden = true; }
-
-  // Reveal on scroll (only blocks that start below the fold)
-  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.documentElement.classList.add("js");
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -6% 0px" });
-    document.querySelectorAll(".rv").forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+  function renderSquad(list) {
+    var staff = list.filter(function (p) { return p.rolle === "Trainer" && p.foto; });
+    var players = list.filter(function (p) { return p.rolle !== "Trainer" && p.foto; });
+    players.sort(function (a, b) { return (parseInt(a.nummer, 10) || 999) - (parseInt(b.nummer, 10) || 999); });
+    [["staff", staff], ["squad", players]].forEach(function (g) {
+      var el = document.getElementById(g[0]), srcs = g[1].map(function (p) { return src(p.foto); });
+      el.innerHTML = "";
+      g[1].forEach(function (p, i) { el.appendChild(pcard(p, srcs, i)); });
+    });
   }
 
-  // Lightbox
+  /* ---------- News (Instagram) ---------- */
+  function renderNews(items) {
+    var box = document.getElementById("reels");
+    if (!items.length) return;
+    box.innerHTML = items.slice(0, 5).map(function (n) {
+      return '<a class="reel" href="' + esc(n.link) + '" target="_blank" rel="noopener">' +
+        '<div class="cover"><img src="' + esc(n.bild) + '" alt="' + esc(n.titel) + '" loading="lazy">' + (n.tag ? '<span class="pill tag">' + esc(n.tag) + "</span>" : "") + "</div>" +
+        "<h3>" + esc(n.titel) + "</h3>" + (n.text ? "<p>" + esc(n.text) + "</p>" : "") + "</a>";
+    }).join("");
+  }
+  function fromBehold(data) {
+    var posts = Array.isArray(data) ? data : (data && data.posts) || [];
+    return posts.map(function (p) {
+      var cap = String(p.prunedCaption || p.caption || "").replace(/#\S+/g, "").replace(/\s+\n/g, "\n").trim();
+      var lines = cap.split("\n").filter(Boolean), title = lines[0] || "Neu auf Instagram";
+      if (title.length > 60) title = title.slice(0, 57) + "…";
+      var text = lines.slice(1).join(" "); if (text.length > 110) text = text.slice(0, 107) + "…";
+      var img = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+      return { link: p.permalink, bild: img, titel: title, text: text, tag: p.mediaType === "VIDEO" ? "Reel" : "Post" };
+    }).filter(function (n) { return n.link && n.bild; });
+  }
+  function loadNews(feedUrl) {
+    var fallback = function () { return getJSON("data/news.json").then(renderNews); };
+    if (!feedUrl) return fallback();
+    // Feed nur alle 3 Stunden pro Besucher neu laden (schont das Behold-Kontingent)
+    var KEY = "stella-ig", TTL = 3 * 60 * 60 * 1000, cached = null;
+    try { cached = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (cached && cached.url === feedUrl && Date.now() - cached.t < TTL && cached.items.length) { renderNews(cached.items); return; }
+    return getJSON(feedUrl).then(fromBehold).then(function (items) {
+      if (!items.length) throw new Error("leer");
+      renderNews(items);
+      try { localStorage.setItem(KEY, JSON.stringify({ url: feedUrl, t: Date.now(), items: items })); } catch (e) {}
+    }).catch(function () { if (cached && cached.items.length) renderNews(cached.items); else return fallback(); });
+  }
+
+  /* ---------- Daten laden ---------- */
+  getJSON("data/einstellungen.json").catch(function () { return {}; }).then(function (cfg) {
+    if (cfg.matchcenter_4liga) MC["4. Liga"] = cfg.matchcenter_4liga;
+    if (cfg.matchcenter_senioren) MC["Senioren 40+"] = cfg.matchcenter_senioren;
+    document.querySelectorAll("[data-mc]").forEach(function (a) { a.href = MC[a.getAttribute("data-mc")]; });
+    loadNews(cfg.behold_feed);
+  });
+  getJSON("data/spiele.json").then(renderMatches).catch(function () {});
+  getJSON("data/sponsoren.json").then(renderSponsors).catch(function () {});
+  getJSON("data/spieler.json").then(renderSquad).catch(function () {});
+
+  /* ---------- Lightbox ---------- */
   var lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), L = [], I = 0;
   function show() { lbImg.src = L[I]; }
   function openLb(list, i) { L = list; I = i; show(); lb.hidden = false; document.getElementById("lbX").focus(); document.getElementById("lbPrev").hidden = document.getElementById("lbNext").hidden = list.length < 2; }
@@ -761,19 +822,28 @@ footer nav a:hover { color: var(--azzurro); }
   lb.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener("touchend", function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); sx = null; });
 
-  // Menu
+  /* ---------- Menü ---------- */
   var hdr = document.getElementById("hdr"), mb = document.getElementById("menuBtn");
   mb.addEventListener("click", function () { var o = hdr.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
   document.querySelectorAll("#mainnav a").forEach(function (a) { a.addEventListener("click", function () { hdr.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); }); });
 
-  // Copy e-mail
+  /* ---------- E-Mail kopieren ---------- */
   document.getElementById("copyMail").addEventListener("click", function () {
     var btn = this, t = document.getElementById("mail").textContent;
     function done(ok) { btn.textContent = ok ? "Kopiert" : "Bitte markieren und kopieren"; setTimeout(function () { btn.textContent = "Adresse kopieren"; }, 2200); }
+    function selectMail() { var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, function () { selectMail(); done(false); });
     else { selectMail(); done(false); }
-    function selectMail() { var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
   });
+
+  /* ---------- Einblenden beim Scrollen ---------- */
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js");
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rv").forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+  }
 })();
 </script>
 </body>

@@ -1,0 +1,134 @@
+# Admin-Oberfläche: https://app.pagescms.org
+# Hier wird festgelegt, welche Formulare der Vorstand sieht.
+
+media:
+  input: img
+  output: img
+
+content:
+  - name: spiele
+    label: Spiele & Resultate
+    type: file
+    path: data/spiele.json
+    list: true
+    fields:
+      - name: datum
+        label: Datum und Anpfiff
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm"
+      - name: team
+        label: Team
+        type: select
+        options:
+          values: ["4. Liga", "Senioren 40+"]
+      - name: gegner
+        label: Gegner
+        type: string
+        description: "z. B. FC Galicia"
+      - name: heimspiel
+        label: Heimspiel
+        type: boolean
+        description: "Einschalten, wenn wir zu Hause spielen"
+      - name: ort
+        label: Spielort
+        type: string
+        description: "z. B. Sportzentrum Füllerich, Platz 1, Gümligen"
+      - name: resultat
+        label: Resultat
+        type: string
+        description: "Nach dem Spiel eintragen, Heim zuerst, z. B. 2:1. Vor dem Spiel leer lassen."
+
+  - name: spieler
+    label: Kader
+    type: file
+    path: data/spieler.json
+    list: true
+    fields:
+      - name: foto
+        label: Foto
+        type: image
+      - name: name
+        label: Name
+        type: string
+      - name: rolle
+        label: Rolle
+        type: select
+        options:
+          values: ["Spieler", "Trainer"]
+      - name: position
+        label: Position
+        type: string
+        description: "z. B. Torhüter, Verteidiger, Mittelfeld, Sturm, Cheftrainer"
+      - name: nummer
+        label: Rückennummer
+        type: string
+
+  - name: sponsoren
+    label: Sponsoren
+    type: file
+    path: data/sponsoren.json
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: website
+        label: Website
+        type: string
+      - name: logo
+        label: Logo
+        type: image
+      - name: stufe
+        label: Stufe
+        type: select
+        options:
+          values: ["Sponsor", "Co-Sponsor", "Partner"]
+      - name: zusatz
+        label: Zusatz neben dem Logo
+        type: string
+        description: "Optional, z. B. Elektro- & Energietechnik"
+      - name: hintergrund
+        label: Hintergrundfarbe
+        type: string
+        description: "Nur für weisse Logos, z. B. #1d2026. Sonst leer lassen."
+
+  - name: news
+    label: News (falls Instagram-Feed aus)
+    type: file
+    path: data/news.json
+    list: true
+    fields:
+      - name: link
+        label: Link zum Instagram-Beitrag
+        type: string
+      - name: bild
+        label: Bild
+        type: image
+      - name: tag
+        label: Etikett
+        type: string
+        description: "z. B. Matchday, Full time"
+      - name: titel
+        label: Titel
+        type: string
+      - name: text
+        label: Kurztext
+        type: text
+
+  - name: einstellungen
+    label: Einstellungen
+    type: file
+    path: data/einstellungen.json
+    fields:
+      - name: behold_feed
+        label: Instagram-Feed (Behold-Link)
+        type: string
+        description: "Link von behold.so, beginnt mit https://feeds.behold.so/. Leer = News von Hand."
+      - name: matchcenter_4liga
+        label: Matchcenter-Link 4. Liga
+        type: string
+      - name: matchcenter_senioren
+        label: Matchcenter-Link Senioren 40+
+        type: string

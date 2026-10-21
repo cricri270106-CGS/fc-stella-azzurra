@@ -4,12 +4,27 @@ Vereinswebsite des FC Stella Azzurra Gümligen (seit 1972).
 
 Live: https://cricri270106-cgs.github.io/fc-stella-azzurra/
 
-## Pflege
+## Inhalte bearbeiten (ohne Code)
 
-Alles steht in `index.html`, ganz unten im `<script>`-Teil:
+1. Auf https://app.pagescms.org mit GitHub anmelden.
+2. Repository `fc-stella-azzurra` wählen.
+3. Links im Menü: **Spiele & Resultate**, **Kader**, **Sponsoren**, **News**, **Einstellungen**.
+4. Ändern, **Save** drücken – nach etwa 1 Minute ist die Website aktualisiert.
 
-- **Spiele** – Liste `FIXTURES`. Pro Spiel eine Zeile mit Datum (`"2026-10-25T11:00"`), Heim, Gast, Wettbewerb und Ort. Die Seite zeigt automatisch das nächste Spiel mit Countdown.
-- **Sponsoren** – Liste `SPONSORS` (`s` = Sponsoren, `c` = Co-Sponsoren, `p` = Partner). Logos liegen in `img/sp/`.
-- **Spielerfotos** – `img/p-XX.jpg`. Namen und Positionen kommen später dazu.
+Wer bearbeiten darf: alle, die im Repository unter *Settings → Collaborators* eingetragen sind.
 
-Änderungen direkt auf github.com: Datei öffnen → Stift-Symbol → ändern → „Commit changes". Nach etwa einer Minute ist die Website aktualisiert.
+### Spiele
+- Alle Spiele der Saison eintragen. Die Website zeigt automatisch das nächste Spiel mit Countdown.
+- Während des Spiels (bis 2 Stunden nach Anpfiff) erscheint „Live" mit einem Knopf zum Matchcenter.
+- Nach dem Spiel das **Resultat** eintragen (Heim zuerst, z. B. `2:1`) – es erscheint als „Letztes Spiel".
+
+### Instagram
+Unter **Einstellungen** den Behold-Link eintragen (`https://feeds.behold.so/…`). Dann erscheinen die neusten Posts automatisch. Ist das Feld leer, werden die Beiträge aus **News** angezeigt.
+
+## Aufbau
+- `index.html` – die Website
+- `impressum.html` – Impressum & Datenschutz
+- `data/*.json` – Inhalte (werden über die Admin-Oberfläche gepflegt)
+- `img/` – Fotos, Logos, Wappen
+- `fonts/` – Schriften (lokal, ohne Google)
+- `.pages.yml` – Formulare der Admin-Oberfläche
