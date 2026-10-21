@@ -106,7 +106,8 @@
     "foto": "img/p-17.jpg",
     "name": "Marmy Nakin",
     "rolle": "Spieler",
-    "position": " Mittelfeld"
+    "position": " Mittelfeld",
+    "nummer": "15"
   },
   {
     "foto": "img/p-26.jpg",
@@ -140,7 +141,8 @@
     "foto": "img/p-20.jpg",
     "name": "Giuliani Macias Marco",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "77"
   },
   {
     "foto": "img/p-24.jpg",
@@ -168,7 +170,7 @@
     "name": "Wehrli Joel",
     "rolle": "Spieler",
     "position": "Strum",
-    "nummer": "77"
+    "nummer": "73"
   },
   {
     "foto": "img/e6200cf4-bbb4-40ec-b1a3-5d6285ef0eef.jpg",
