@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Groupe Egli",
+    "website": "https://groupe-egli.ch/",
+    "logo": "img/sp/egli.svg",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "R4 Raumwelten AG",
+    "website": "https://www.r-4.ch/",
+    "logo": "img/sp/r4.png",
+    "stufe": "Sponsor",
+    "zusatz": "Raumwelten",
+    "hintergrund": ""
+  },
+  {
+    "name": "Schönisol AG",
+    "website": "https://www.schoenisol.ch/",
+    "logo": "img/sp/schoenisol.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": "#1d2026"
+  },
+  {
+    "name": "Art-Böden AG",
+    "website": "https://www.art-boeden.ch/",
+    "logo": "img/sp/artboeden.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Gerber AG",
+    "website": "https://gerberelektro.ch/",
+    "logo": "img/sp/gerber.png",
+    "stufe": "Sponsor",
+    "zusatz": "Elektro- & Energietechnik",
+    "hintergrund": ""
+  },
+  {
+    "name": "Sanare",
+    "website": "https://www.sanare.ch/",
+    "logo": "img/sp/sanare.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "appliedtec GmbH",
+    "website": "https://www.appliedtec.ch",
+    "logo": "",
+    "stufe": "Sponsor",
+    "zusatz": "Database Engineering",
+    "hintergrund": ""
+  },
+  {
+    "name": "PGTech AG",
+    "website": "https://www.pgtech.ch/",
+    "logo": "img/sp/pgtech.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "L'Osteria Belp",
+    "website": "https://www.losteriabelp.ch/",
+    "logo": "img/sp/osteria.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Mundiger Pizza & Burger Huus",
+    "website": "https://mundigerhuus.ch/",
+    "logo": "img/sp/mundiger.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": "#141414"
+  },
+  {
+    "name": "Seeland Job AG",
+    "website": "https://www.seelandjob.ch/de/",
+    "logo": "img/sp/seeland.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Piazza Vittoria",
+    "website": "https://www.piazzavittoria.ch",
+    "logo": "img/sp/piazza.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Kebap King",
+    "website": "https://kebap-king.ch/",
+    "logo": "img/sp/kebapking.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Zigerlig Bautrocknung AG",
+    "website": "https://www.zigerlig.ch/",
+    "logo": "img/sp/zigerlig.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Ristorante Beau Rivage",
+    "website": "https://beau-rivage-thun.ch/",
+    "logo": "img/sp/beaurivage.png",
+    "stufe": "Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Restaurant National La Favorita",
+    "website": "https://www.restaurant-favorita.ch",
+    "logo": "img/sp/favorita.png",
+    "stufe": "Co-Sponsor",
+    "zusatz": "",
+    "hintergrund": "#1b1b1b"
+  },
+  {
+    "name": "Frimasa Kaminbau GmbH",
+    "website": "https://frimasa.ch/",
+    "logo": "img/sp/frimasa.png",
+    "stufe": "Co-Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Gesundheitspraxis Ursula Merz",
+    "website": "https://www.ursulamerz.ch",
+    "logo": "img/sp/merz.png",
+    "stufe": "Co-Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Reimal AG",
+    "website": "https://reimal.ch",
+    "logo": "img/sp/reimal.png",
+    "stufe": "Co-Sponsor",
+    "zusatz": "",
+    "hintergrund": ""
+  },
+  {
+    "name": "Intersport Friedrich",
+    "website": "https://www.friedrich-sport.ch/",
+    "logo": "img/sp/friedrich.png",
+    "stufe": "Partner",
+    "zusatz": "",
+    "hintergrund": ""
+  }
+]
