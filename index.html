@@ -143,6 +143,9 @@ nav.links a:hover { color: #fff; border-bottom-color: var(--azzurro); }
 .ttile { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 18px; min-height: 260px; padding: 28px; border-radius: 6px; overflow: hidden; text-decoration: none; color: #fff; background: var(--royal); isolation: isolate; min-width: 0; transition: transform .25s, box-shadow .25s; }
 .ttile::before { content: ""; position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,.07) 34px 68px); }
 .ttile.alt { background: var(--royal-deep); }
+.ttile .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; z-index: -2; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.ttile.photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(17,40,90,.92) 0%, rgba(17,40,90,.6) 55%, rgba(17,40,90,.25) 100%); }
+.ttile.photo:hover .bgimg { transform: scale(1.05); }
 .ttile:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -22px rgba(9,25,60,.6); }
 .ttile > * { min-width: 0; }
 .ttile .rows { position: absolute; right: 28px; top: 28px; width: min(46%, 260px); display: grid; gap: 7px; opacity: .9; z-index: -1; }
@@ -380,9 +383,9 @@ footer nav a:hover { color: var(--azzurro); }
     <nav class="links" id="mainnav" aria-label="Hauptnavigation">
       <ul>
         <li><a href="#spiele">Spiele</a></li>
-        <li><a href="#tabelle">Tabelle</a></li>
         <li><a href="#news">News</a></li>
-        <li><a href="#team">Team</a></li>
+        <li><a href="#teams">Tabellen</a></li>
+        <li><a href="#kader">Kader</a></li>
         <li><a href="#sponsoren">Sponsoren</a></li>
         <li><a href="#verein">Verein</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -402,7 +405,7 @@ footer nav a:hover { color: var(--azzurro); }
       <p>Fussball mit italienischem Herz in Gümligen. Seit dem 1. Juli 1972 spielen wir in Blau, auf dem Füllerich und auswärts.</p>
       <div class="cta">
         <a class="btn btn-white" href="#spiele">Nächstes Spiel <svg><use href="#arrow"/></svg></a>
-        <a class="btn btn-line" href="#team">Zum Team</a>
+        <a class="btn btn-line" href="#kader">Zum Team</a>
       </div>
     </div>
   </section>
@@ -427,35 +430,15 @@ footer nav a:hover { color: var(--azzurro); }
           <div class="upnext" id="upnext"><span>Danach:</span> <b>Mi 28.10. · 19:30</b> <span>FC Rubigen – FC Stella Azzurra, Senioren 40+</span></div>
         </div>
         <div class="matchlinks">
-          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener"><div><b>Tabelle 4. Liga</b><span>Rangliste &amp; Resultate, Gruppe 4</span></div><svg><use href="#ext"/></svg></a>
-          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" target="_blank" rel="noopener"><div><b>Tabelle Senioren 40+</b><span>MFV, Gruppe 3</span></div><svg><use href="#ext"/></svg></a>
-          <a href="https://club.football.ch/fcstellaazzurra" target="_blank" rel="noopener"><div><b>Vereinsseite</b><span>Alle Teams &amp; Spiele auf football.ch</span></div><svg><use href="#ext"/></svg></a>
+          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener"><div><b>Resultate &amp; Spielplan</b><span>Alle Spiele im FVBJ-Matchcenter</span></div><svg><use href="#ext"/></svg></a>
+          <a href="#teams"><div><b>Tabellen</b><span>4. Liga &amp; Senioren 40+</span></div><svg><use href="#arrow"/></svg></a>
+          <a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener"><div><b>Matchday-Updates</b><span>Live auf Instagram</span></div><svg><use href="#ig"/></svg></a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="tickerwrap" aria-hidden="true"><div class="ticker"><div class="track"><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span></div></div></div>
-
-  <section class="sec" id="tabelle" style="padding-bottom:0">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div><p class="kicker">Live im FVBJ-Matchcenter</p><h2>Tabelle</h2></div>
-      </div>
-      <div class="rv tables">
-        <a class="ttile" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener" aria-label="Tabelle 4. Liga im FVBJ-Matchcenter öffnen">
-          <div class="rows" aria-hidden="true"><i><span></span></i><i><span></span></i><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
-          <div><small>Erste Mannschaft</small><h3>4. Liga<br>Gruppe 4</h3><p>Rangliste, Resultate und Spielplan</p></div>
-          <span class="go"><svg><use href="#arrow"/></svg></span>
-        </a>
-        <a class="ttile alt" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" target="_blank" rel="noopener" aria-label="Tabelle Senioren 40+ im FVBJ-Matchcenter öffnen">
-          <div class="rows" aria-hidden="true"><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
-          <div><small>Senioren</small><h3>40+<br>Gruppe 3</h3><p>MFV-Meisterschaft</p></div>
-          <span class="go"><svg><use href="#arrow"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <section class="sec" id="news">
     <div class="wrap">
@@ -497,10 +480,30 @@ footer nav a:hover { color: var(--azzurro); }
     </div>
   </section>
 
-  <section class="sec team-band" id="team">
+  <section class="sec" id="teams">
     <div class="wrap">
       <div class="sec-head rv">
-        <div><p class="kicker">Saison 2026/27</p><h2>Erste Mannschaft</h2></div>
+        <div><p class="kicker">Live im FVBJ-Matchcenter</p><h2>Teams &amp; Tabellen</h2></div>
+      </div>
+      <div class="rv tables">
+        <a class="ttile photo" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener" aria-label="Tabelle und Spiele 4. Liga im FVBJ-Matchcenter öffnen">
+          <img class="bgimg" src="img/team.jpg" alt="" loading="lazy">
+          <div><small>Erste Mannschaft</small><h3>4. Liga<br>Gruppe 4</h3><p>Tabelle, Resultate und Spielplan</p></div>
+          <span class="go"><svg><use href="#arrow"/></svg></span>
+        </a>
+        <a class="ttile alt" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" target="_blank" rel="noopener" aria-label="Tabelle und Spiele Senioren 40+ im FVBJ-Matchcenter öffnen">
+          <div class="rows" aria-hidden="true"><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
+          <div><small>Senioren 40+ · Foto folgt</small><h3>40+<br>Gruppe 3</h3><p>Tabelle, Resultate und Spielplan</p></div>
+          <span class="go"><svg><use href="#arrow"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec team-band" id="kader">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Kader 2026/27</p><h2>Erste Mannschaft</h2></div>
         <a class="more" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener">4. Liga, Gruppe 4 <svg><use href="#arrow"/></svg></a>
       </div>
       <button class="groupshot" id="groupshot" aria-label="Mannschaftsfoto gross anzeigen">
@@ -510,20 +513,9 @@ footer nav a:hover { color: var(--azzurro); }
 
       <h3 class="squad-title">Trainerstab</h3>
       <div class="squad" id="staff"></div>
-      <h3 class="squad-title">Kader</h3>
+      <h3 class="squad-title">Spieler</h3>
       <div class="rv squad" id="squad"></div>
 
-      <h3 class="squad-title">Unsere Teams</h3>
-      <div class="rv teams2">
-        <a class="tcard" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener">
-          <div class="tv"><img src="img/team.jpg" alt="" loading="lazy"></div>
-          <div class="tb"><h3>4. Liga</h3><p>Erste Mannschaft · FVBJ, Gruppe 4</p><span class="more">Tabelle &amp; Spiele <svg><use href="#arrow"/></svg></span></div>
-        </a>
-        <a class="tcard" href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;t=36923&amp;a=trr" target="_blank" rel="noopener">
-          <div class="tv empty">Foto folgt</div>
-          <div class="tb"><h3>Senioren 40+</h3><p>MFV, Gruppe 3</p><span class="more">Tabelle &amp; Spiele <svg><use href="#arrow"/></svg></span></div>
-        </a>
-      </div>
     </div>
   </section>
 
@@ -617,7 +609,7 @@ footer nav a:hover { color: var(--azzurro); }
       <small>Hofackerweg 16a · Postfach 233 · 3073 Gümligen<br>Mitglied FVBJ · Kreisverband MFV · © 2026</small>
     </div>
     <nav aria-label="Fusszeile">
-      <a href="#spiele">Spiele</a><a href="#news">News</a><a href="#team">Team</a><a href="#sponsoren">Sponsoren</a><a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#spiele">Spiele</a><a href="#news">News</a><a href="#teams">Tabellen</a><a href="#kader">Kader</a><a href="#sponsoren">Sponsoren</a><a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
 </footer>
