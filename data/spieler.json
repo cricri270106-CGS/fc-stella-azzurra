@@ -15,79 +15,92 @@
     "foto": "img/p-05.jpg",
     "name": "Rexhepi Laurent",
     "rolle": "Spieler",
-    "position": "Torhüter"
+    "position": "Torhüter",
+    "nummer": "78"
   },
   {
     "foto": "img/p-06.jpg",
     "name": "Wehrli Laurin",
     "rolle": "Spieler",
-    "position": "Torhüter"
+    "position": "Torhüter",
+    "nummer": "98"
   },
   {
     "foto": "img/p-21.jpg",
     "name": " Oesterling Matti",
     "rolle": "Spieler",
-    "position": "Torhüter"
+    "position": "Torhüter",
+    "nummer": "1"
   },
   {
     "foto": "img/p-07.jpg",
     "name": "Salerno Sanchez Cristian",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "4"
   },
   {
     "foto": "img/p-14.jpg",
     "name": "Witschi Sandro",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "5"
   },
   {
     "foto": "img/p-11.jpg",
     "name": " Lisena Luca",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "3"
   },
   {
     "foto": "img/p-15.jpg",
     "name": "Lisena Alessandro",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "6"
   },
   {
     "foto": "img/p-23.jpg",
     "name": "Huber Simon",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "2"
   },
   {
     "foto": "img/p-16.jpg",
     "name": "Thai Ho Tuong Huy",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "17"
   },
   {
     "foto": "img/p-22.jpg",
     "name": "Tuominen Timo",
     "rolle": "Spieler",
-    "position": "Verteidiger"
+    "position": "Verteidiger",
+    "nummer": "95"
   },
   {
     "foto": "img/p-19.jpg",
     "name": "Onate Ramiro Nicolas",
     "rolle": "Spieler",
-    "position": "Mittelfeld"
+    "position": "Mittelfeld",
+    "nummer": "13"
   },
   {
     "foto": "img/p-09.jpg",
     "name": "Lucas Nicolas",
     "rolle": "Spieler",
-    "position": "Mittelfeld"
+    "position": "Mittelfeld",
+    "nummer": "8"
   },
   {
     "foto": "img/p-08.jpg",
     "name": "Bürgin Laveen",
     "rolle": "Spieler",
-    "position": "Mittelfeld"
+    "position": "Mittelfeld",
+    "nummer": "14"
   },
   {
     "foto": "img/p-17.jpg",
@@ -99,25 +112,29 @@
     "foto": "img/p-26.jpg",
     "name": "Weiler Dominik",
     "rolle": "Spieler",
-    "position": "Mittelfeld"
+    "position": "Mittelfeld",
+    "nummer": "11"
   },
   {
     "foto": "img/p-10.jpg",
     "name": "Rosiello Dario",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "21"
   },
   {
     "foto": "img/p-13.jpg",
     "name": "Kessebohm Finn",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "19"
   },
   {
     "foto": "img/p-18.jpg",
     "name": "Jensen Till",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "10"
   },
   {
     "foto": "img/p-20.jpg",
@@ -129,30 +146,35 @@
     "foto": "img/p-24.jpg",
     "name": "Tercier Noah",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "15"
   },
   {
     "foto": "img/p-25.jpg",
     "name": "Onate Gonzalo Adrian",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "10"
   },
   {
     "foto": "img/p-28.jpg",
     "name": "Kyburz Kevin",
     "rolle": "Spieler",
-    "nummer": "Sturm"
+    "position": "Sturm",
+    "nummer": "7"
   },
   {
     "foto": "img/74815430-15fa-4ef7-a041-efd6a846f81b.jpg",
     "name": "Wehrli Joel",
     "rolle": "Spieler",
-    "position": "Strum"
+    "position": "Strum",
+    "nummer": "77"
   },
   {
     "foto": "img/e6200cf4-bbb4-40ec-b1a3-5d6285ef0eef.jpg",
     "name": "Napoletano Denny",
     "rolle": "Spieler",
-    "position": "Sturm"
+    "position": "Sturm",
+    "nummer": "12"
   }
 ]
