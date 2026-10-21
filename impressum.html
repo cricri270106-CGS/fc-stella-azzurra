@@ -7,9 +7,11 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="img/crest.png">
 <link rel="stylesheet" href="fonts/fonts.css">
+<script>try{var t=localStorage.getItem("stella-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 :root { --royal: #1f4fa3; --royal-deep: #11285a; --ink: #0d1830; --muted: #5a6882; --line: #dde4f0; --bg: #fff; --bg-alt: #f1f5fb; color-scheme: light; }
-@media (prefers-color-scheme: dark) { :root { --ink: #e7edf8; --muted: #9aa9c4; --line: #1f2e4b; --bg: #0a1222; --bg-alt: #0f1a30; --royal: #6ea1f2; color-scheme: dark; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink: #e7edf8; --muted: #9aa9c4; --line: #1f2e4b; --bg: #0a1222; --bg-alt: #0f1a30; --royal: #6ea1f2; color-scheme: dark; } }
+:root[data-theme="dark"] { --ink: #e7edf8; --muted: #9aa9c4; --line: #1f2e4b; --bg: #0a1222; --bg-alt: #0f1a30; --royal: #6ea1f2; color-scheme: dark; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 "Barlow", system-ui, sans-serif; }
 header { background: var(--royal-deep); color: #fff; }
