@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FC Stella Azzurra</title>
+<meta name="description" content="FC Stella Azzurra, Fussballverein aus Gümligen seit 1972. 4. Liga FVBJ, Senioren 40+, Sportzentrum Füllerich.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: club-site grammar. Crest-led header, photo hero with an overlapping matchday card, then bands that alternate white / royal blue. The crest's vertical stripes are the one recurring motif. */
+:root {
+  --royal: #1f4fa3;        /* crest blue */
+  --royal-deep: #11285a;   /* crest outline */
+  --azzurro: #2f9be6;      /* shirt sky blue */
+  --bg: #ffffff;
+  --bg-alt: #f1f5fb;
+  --ink: #0d1830;
+  --muted: #5a6882;
+  --line: #dde4f0;
+  --tile: #ffffff;
+  --verde: #1f9a4d; --rosso: #d22f37;
+  --on-royal: #ffffff;
+  --on-royal-muted: #b9cbeb;
+  --f-display: "Saira Condensed", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1222; --bg-alt: #0f1a30; --ink: #e7edf8; --muted: #9aa9c4; --line: #1f2e4b;
+    --tile: #f4f7fc; --royal: #1c4796; --royal-deep: #060e20; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1222; --bg-alt: #0f1a30; --ink: #e7edf8; --muted: #9aa9c4; --line: #1f2e4b;
+  --tile: #f4f7fc; --royal: #1c4796; --royal-deep: #060e20; color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--royal-deep); }
+a { color: inherit; }
+img { display: block; }
+:focus-visible { outline: 3px solid var(--azzurro); outline-offset: 3px; }
+.wrap { max-width: 1240px; margin-inline: auto; padding-left: var(--gl); padding-right: var(--gr); }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; line-height: .95; text-wrap: balance; text-transform: uppercase; }
+h2 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800; letter-spacing: .005em; }
+.kicker { font: 700 .82rem/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--royal); display: flex; align-items: center; gap: 10px; }
+.kicker::before { content: ""; width: 22px; height: 12px; background: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px); }
+.sec { padding-block: clamp(60px, 8vw, 104px); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 24px; margin-bottom: 36px; }
+.sec-head > div { display: grid; gap: 12px; min-width: 0; }
+.more { font: 700 .9rem/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; color: var(--royal); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.more:hover { text-decoration: underline; text-underline-offset: 4px; }
+.more svg, .btn svg { width: 16px; height: 16px; flex: none; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; font: 700 .95rem/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: background .2s, color .2s, transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-white { background: #fff; color: var(--royal-deep); }
+.btn-white:hover { background: var(--azzurro); color: #fff; }
+.btn-line { border: 2px solid rgba(255,255,255,.55); color: #fff; padding: 12px 20px; }
+.btn-line:hover { background: #fff; color: var(--royal-deep); }
+.btn-royal { background: var(--royal); color: #fff; }
+.btn-royal:hover { background: var(--royal-deep); }
+
+/* Top strip + header */
+.topbar { background: var(--royal-deep); color: var(--on-royal-muted); font-size: .85rem; }
+.topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 36px; }
+.topbar a { text-decoration: none; display: inline-flex; gap: 6px; align-items: center; color: #fff; }
+.topbar svg { width: 15px; height: 15px; }
+.topbar .loc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+header.main { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--royal); color: #fff; box-shadow: 0 1px 0 rgba(0,0,0,.15); }
+header.main .wrap { display: flex; align-items: center; height: 72px; gap: 20px; }
+.crest-link { position: relative; width: 72px; height: 72px; flex: none; }
+.crest-link svg { position: absolute; top: 6px; left: 0; width: 72px; height: 102px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.28)); transition: transform .3s; }
+.crest-link:hover svg { transform: translateY(-2px) rotate(-2deg); }
+.club-name { font: 800 1.55rem/1 var(--f-display); text-transform: uppercase; text-decoration: none; letter-spacing: .02em; white-space: nowrap; }
+.club-name small { display: block; font: 600 .72rem/1.2 var(--f-body); letter-spacing: .18em; color: var(--on-royal-muted); margin-top: 3px; }
+nav.links { margin-left: auto; }
+nav.links ul { display: flex; list-style: none; margin: 0; padding: 0; gap: 2px; }
+nav.links a { display: block; padding: 10px 14px; text-decoration: none; font: 700 1.08rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .06em; color: #dce7fb; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; }
+nav.links a:hover { color: #fff; border-bottom-color: var(--azzurro); }
+.menu-btn { display: none; margin-left: auto; background: none; border: 0; color: #fff; padding: 8px; cursor: pointer; }
+.menu-btn svg { width: 28px; height: 28px; }
+@media (max-width: 960px) {
+  .menu-btn { display: block; }
+  nav.links { position: absolute; top: 72px; left: 0; right: 0; background: var(--royal-deep); padding: 8px var(--gr) 18px var(--gl); }
+  header.main:not(.open) nav.links { display: none; }
+  nav.links ul { flex-direction: column; }
+  nav.links a { padding: 14px 6px 14px 96px; font-size: 1.3rem; }
+}
+@media (max-width: 420px) { .club-name { font-size: 1.3rem; } .club-name small { letter-spacing: .1em; } }
+
+/* Hero */
+.hero { position: relative; background: var(--royal-deep); color: #fff; overflow: hidden; }
+.hero-img { position: absolute; inset: 0; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; animation: drift 14s ease-out both; }
+@keyframes drift { from { transform: scale(1.08); } to { transform: scale(1); } }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,24,56,.86) 0%, rgba(10,24,56,.55) 42%, rgba(10,24,56,.05) 75%), linear-gradient(0deg, rgba(10,24,56,.7), transparent 40%); }
+.hero .wrap { position: relative; z-index: 1; display: grid; align-content: end; min-height: clamp(520px, 78vh, 720px); padding-block: 110px 150px; }
+.hero h1 { font-size: clamp(4.2rem, 12vw, 9.5rem); font-weight: 800; line-height: .82; font-style: italic; letter-spacing: -.01em; }
+.hero h1 em { display: block; font-style: italic; color: var(--azzurro); }
+.hero p { margin: 22px 0 0; max-width: 42ch; font-size: clamp(1.05rem, 2vw, 1.25rem); color: #dbe6f8; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.tricolore { display: inline-flex; height: 6px; width: 54px; margin-bottom: 18px; }
+.tricolore i { flex: 1; } .tricolore i:nth-child(1) { background: var(--verde); } .tricolore i:nth-child(2) { background: #fff; } .tricolore i:nth-child(3) { background: var(--rosso); }
+
+/* Matchday card */
+.matchbar { position: relative; z-index: 2; margin-top: -96px; }
+.matchgrid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; background: var(--bg); box-shadow: 0 24px 60px -24px rgba(9,25,60,.45); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.matchgrid > * { min-width: 0; }
+.nextmatch { padding: 26px 30px; display: grid; gap: 16px; }
+.mtop { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.pill { font: 700 .75rem/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; padding: 7px 10px; border-radius: 3px; background: var(--royal); color: #fff; }
+.pill.away { background: var(--muted); }
+.mdate { font: 600 .95rem/1.3 var(--f-body); color: var(--muted); font-variant-numeric: tabular-nums; }
+.versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.team { display: flex; align-items: center; gap: 12px; font: 800 clamp(1.3rem, 2.6vw, 1.9rem)/1 var(--f-display); text-transform: uppercase; min-width: 0; }
+.team.r { justify-content: flex-end; text-align: right; }
+.team svg { width: 40px; height: 56px; flex: none; }
+.team .ph { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-alt); border: 2px solid var(--line); display: grid; place-items: center; font: 800 1rem/1 var(--f-display); color: var(--muted); flex: none; }
+.kick { font: 800 clamp(1.8rem, 3.6vw, 2.6rem)/1 var(--f-display); color: var(--royal); font-variant-numeric: tabular-nums; text-align: center; }
+.kick small { display: block; font: 600 .72rem/1 var(--f-body); letter-spacing: .14em; color: var(--muted); margin-top: 6px; }
+.mplace { color: var(--muted); font-size: .95rem; display: flex; gap: 8px; align-items: center; }
+.mplace svg { width: 16px; height: 16px; flex: none; }
+.matchlinks { background: var(--royal); color: #fff; display: grid; }
+.matchlinks a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 26px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.14); transition: background .2s; }
+.matchlinks a:last-child { border-bottom: 0; }
+.matchlinks a:hover { background: rgba(255,255,255,.08); }
+.matchlinks b { font: 800 1.35rem/1 var(--f-display); text-transform: uppercase; display: block; }
+.matchlinks span { font-size: .88rem; color: var(--on-royal-muted); }
+.matchlinks svg { width: 20px; height: 20px; flex: none; }
+.upnext { border-top: 1px solid var(--line); padding-top: 14px; font-size: .92rem; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.upnext b { color: var(--ink); font-weight: 600; }
+@media (max-width: 860px) { .matchgrid { grid-template-columns: 1fr; } .nextmatch { padding: 22px 18px; } .team svg { width: 32px; height: 44px; } .team .ph { width: 36px; height: 36px; } }
+@media (max-width: 520px) { .versus { grid-template-columns: 1fr; text-align: left; gap: 10px; } .team.r { justify-content: flex-end; text-align: left; flex-direction: row-reverse; } .kick { text-align: left; } }
+
+/* Tabelle tiles */
+.tables { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.ttile { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 18px; min-height: 260px; padding: 28px; border-radius: 6px; overflow: hidden; text-decoration: none; color: #fff; background: var(--royal); isolation: isolate; min-width: 0; transition: transform .25s, box-shadow .25s; }
+.ttile::before { content: ""; position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,.07) 34px 68px); }
+.ttile.alt { background: var(--royal-deep); }
+.ttile:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -22px rgba(9,25,60,.6); }
+.ttile > * { min-width: 0; }
+.ttile .rows { position: absolute; right: 28px; top: 28px; width: min(46%, 260px); display: grid; gap: 7px; opacity: .9; z-index: -1; }
+.ttile .rows i { display: grid; grid-template-columns: 18px 1fr 26px; gap: 8px; align-items: center; height: 18px; }
+.ttile .rows i::before { content: ""; height: 10px; border-radius: 2px; background: rgba(255,255,255,.35); }
+.ttile .rows i::after { content: ""; grid-column: 3; height: 10px; border-radius: 2px; background: rgba(255,255,255,.35); }
+.ttile .rows i span { height: 10px; border-radius: 2px; background: rgba(255,255,255,.18); }
+.ttile .rows i.us span, .ttile .rows i.us::before, .ttile .rows i.us::after { background: var(--azzurro); }
+.ttile .rows i.us { outline: 2px solid rgba(255,255,255,.6); outline-offset: 3px; border-radius: 3px; }
+.ttile small { font: 700 .78rem/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--on-royal-muted); }
+.ttile h3 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 800; margin-top: 8px; }
+.ttile p { margin: 8px 0 0; color: var(--on-royal-muted); }
+.ttile .go { width: 56px; height: 56px; border-radius: 50%; background: #fff; color: var(--royal-deep); display: grid; place-items: center; transition: background .2s, color .2s, transform .2s; }
+.ttile:hover .go { background: var(--azzurro); color: #fff; transform: rotate(-45deg); }
+.ttile .go svg { width: 24px; height: 24px; }
+@media (max-width: 860px) { .tables { grid-template-columns: 1fr; } .ttile { min-height: 210px; padding: 22px; } .ttile .rows { right: 22px; top: 22px; width: 44%; } }
+
+/* News / Instagram */
+.reels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.reel { display: grid; gap: 12px; text-decoration: none; align-content: start; min-width: 0; }
+.reel .cover { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 6px; overflow: hidden; background: var(--royal-deep); }
+.reel .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.reel:hover .cover img { transform: scale(1.05); }
+.reel .tag { position: absolute; top: 10px; left: 10px; }
+.reel h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.05; }
+.reel p { margin: 0; font-size: .92rem; color: var(--muted); line-height: 1.45; }
+@media (max-width: 1000px) { .reels { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: minmax(200px, 42%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; } .reel { scroll-snap-align: start; } }
+@media (max-width: 520px) { .reels { grid-auto-columns: 68%; } }
+.insta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; }
+.insta-row p { margin: 0; color: var(--muted); }
+.btn-insta { background: linear-gradient(90deg, #f58529, #dd2a7b 50%, #8134af); color: #fff; }
+
+/* Team */
+.team-band { background: var(--bg-alt); }
+.groupshot { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 9; max-width: 100%; cursor: zoom-in; border: 0; padding: 0; width: 100%; background: var(--royal-deep); }
+.groupshot img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
+.groupshot figcaption, .groupshot .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 22px 16px; background: linear-gradient(transparent, rgba(8,20,48,.85)); color: #fff; text-align: left; font: 600 .95rem/1.3 var(--f-body); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.squad-title { margin: 48px 0 18px; font: 800 1.5rem/1 var(--f-display); text-transform: uppercase; display: flex; align-items: center; gap: 14px; }
+.squad-title::after { content: ""; flex: 1; height: 2px; background: var(--line); }
+.squad { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+.pcard { border: 0; padding: 0; background: var(--bg); border-radius: 6px; overflow: hidden; text-align: left; cursor: zoom-in; color: var(--ink); display: grid; box-shadow: 0 1px 0 var(--line); transition: transform .25s, box-shadow .25s; }
+.pcard:hover { transform: translateY(-4px); box-shadow: 0 16px 30px -18px rgba(9,25,60,.5); }
+.pcard .ph { position: relative; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; background: linear-gradient(180deg, #e9eef6, #d4deee); }
+.pcard .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; }
+.pcard .num { position: absolute; right: 8px; top: 4px; font: 800 2.4rem/1 var(--f-display); color: var(--royal); opacity: .9; font-style: italic; }
+.pcard .info { padding: 10px 12px 12px; border-top: 4px solid var(--royal); display: grid; gap: 2px; }
+.pcard .info b { font: 700 1.1rem/1.1 var(--f-display); text-transform: uppercase; }
+.pcard .info span { font-size: .8rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
+.pcard.staff .info { border-top-color: var(--azzurro); }
+@media (max-width: 480px) { .squad { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+/* Teams row */
+.teams2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tcard { border-radius: 6px; overflow: hidden; background: var(--royal); color: #fff; display: grid; grid-template-rows: auto 1fr; text-decoration: none; min-width: 0; }
+.tcard .tv { aspect-ratio: 16 / 7; max-width: 100%; overflow: hidden; position: relative; }
+.tcard .tv img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transition: transform .5s; }
+.tcard:hover .tv img { transform: scale(1.04); }
+.tcard .tv.empty { background: repeating-linear-gradient(90deg, var(--royal) 0 26px, #2a5cb5 26px 52px); display: grid; place-items: center; font: 700 .9rem/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--on-royal-muted); }
+.tcard .tb { padding: 20px 22px; display: grid; gap: 6px; align-content: start; }
+.tcard h3 { font-size: 2rem; font-weight: 800; }
+.tcard p { margin: 0; color: var(--on-royal-muted); font-size: .95rem; }
+.tcard .more { color: #fff; margin-top: 6px; }
+@media (max-width: 760px) { .teams2 { grid-template-columns: 1fr; } }
+
+/* Sponsors */
+.tier-label { font: 800 1.2rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .04em; margin: 0 0 14px; color: var(--muted); }
+.logos { display: grid; gap: 12px; margin-bottom: 36px; }
+.logos.s { grid-template-columns: repeat(5, 1fr); }
+.logos.c { grid-template-columns: repeat(4, 1fr); }
+.logos.p { grid-template-columns: minmax(0, 340px); }
+.logo { background: var(--tile); border: 1px solid var(--line); border-radius: 6px; height: 112px; display: grid; place-items: center; padding: 18px; text-decoration: none; min-width: 0; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.logo:hover { border-color: var(--royal); box-shadow: 0 10px 24px -14px rgba(9,25,60,.45); transform: translateY(-2px); }
+.logo img { max-width: 100%; max-height: 66px; width: auto; height: auto; object-fit: contain; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.logo:hover img { transform: scale(1.06); }
+.logo.dark { border-color: transparent; }
+.logos.s .logo:nth-child(-n+5) { height: 132px; }
+.logos.s .logo:nth-child(-n+5) img { max-height: 80px; }
+.logo .combo { display: flex; align-items: center; gap: 12px; }
+.logo .combo img { max-height: 54px; }
+
+/* Sponsor marquee */
+.marquee { position: relative; overflow: hidden; padding-block: 22px; margin-bottom: 44px; border-block: 1px solid var(--line); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee .track { display: flex; gap: 56px; width: max-content; align-items: center; animation: slide 48s linear infinite; }
+.marquee:hover .track { animation-play-state: paused; }
+.marquee .track a { display: grid; place-items: center; height: 60px; padding: 0 6px; border-radius: 6px; }
+.marquee .track a.dark { padding: 0 14px; }
+.marquee .track img { max-height: 46px; max-width: 170px; width: auto; height: auto; }
+.marquee .track .wm { font: 800 1.2rem/1 var(--f-display); text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.logo .wm { font: 800 1.15rem/1.05 var(--f-display); text-transform: uppercase; color: #3a4660; text-align: center; letter-spacing: .02em; overflow-wrap: anywhere; }
+.logo .wm small { display: block; font: 600 .68rem/1.2 var(--f-body); letter-spacing: .12em; color: #7d879b; margin-top: 4px; }
+.logo:hover .wm { color: var(--royal); }
+@media (max-width: 1000px) { .logos.s { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 760px) { .logos.s, .logos.c { grid-template-columns: repeat(2, 1fr); } .logo { height: 96px; } }
+.becomesponsor { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 28px 30px; border-radius: 6px; background: var(--royal); color: #fff; background-image: repeating-linear-gradient(90deg, transparent 0 40px, rgba(255,255,255,.05) 40px 80px); }
+.becomesponsor > * { min-width: 0; }
+.becomesponsor h3 { font-size: 2rem; font-weight: 800; }
+.becomesponsor p { margin: 6px 0 0; color: var(--on-royal-muted); max-width: 58ch; }
+@media (max-width: 700px) { .becomesponsor { grid-template-columns: 1fr; padding: 24px 20px; } }
+
+/* Verein */
+.club-band { background: var(--royal-deep); color: #fff; position: relative; overflow: hidden; }
+.club-band .kicker { color: var(--azzurro); }
+.club-band .bgcrest { position: absolute; right: -60px; bottom: -80px; width: 380px; height: 540px; opacity: .06; pointer-events: none; }
+.club-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; position: relative; }
+.club-grid > * { min-width: 0; }
+.club-grid .story { display: grid; gap: 18px; align-content: start; }
+.club-grid .story p { margin: 0; color: #c8d6ee; max-width: 56ch; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.14); border-radius: 6px; overflow: hidden; margin-top: 8px; }
+.stats div { background: var(--royal-deep); padding: 18px 16px; display: grid; gap: 4px; }
+.stats b { font: 800 2rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stats span { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--on-royal-muted); font-weight: 600; }
+.board { display: grid; gap: 0; align-content: start; }
+.board h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+.board .row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.12); flex-wrap: wrap; }
+.board .row span { color: var(--on-royal-muted); font-size: .92rem; }
+.board .row b { font-weight: 600; }
+.places { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 26px; }
+.places div { padding: 16px; border: 1px solid rgba(255,255,255,.14); border-radius: 6px; display: grid; gap: 4px; }
+.places b { font: 800 1.2rem/1.1 var(--f-display); text-transform: uppercase; }
+.places span { font-size: .88rem; color: var(--on-royal-muted); }
+@media (max-width: 860px) { .club-grid { grid-template-columns: 1fr; gap: 36px; } }
+@media (max-width: 420px) { .stats { grid-template-columns: 1fr 1fr; } .places { grid-template-columns: 1fr; } }
+
+/* Kontakt */
+.contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.contact > div { border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; background: var(--bg); }
+.contact h3 { font-size: 1.3rem; font-weight: 800; color: var(--royal); }
+.contact p { margin: 0; overflow-wrap: anywhere; }
+.contact .sub { color: var(--muted); font-size: .92rem; }
+.contact a { color: var(--royal); font-weight: 600; }
+.copy { justify-self: start; border: 1px solid var(--line); background: var(--bg-alt); color: var(--ink); font: 600 .82rem/1 var(--f-body); padding: 8px 12px; border-radius: 4px; cursor: pointer; letter-spacing: .04em; }
+.copy:hover { border-color: var(--royal); }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+.docs { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+.docs a { text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px; font-weight: 600; font-size: .92rem; display: inline-flex; gap: 8px; align-items: center; }
+.docs a:hover { border-color: var(--royal); color: var(--royal); }
+.docs svg { width: 15px; height: 15px; }
+
+footer { background: var(--royal-deep); color: var(--on-royal-muted); border-top: 4px solid; border-image: linear-gradient(90deg, var(--verde) 0 33.3%, #fff 33.3% 66.6%, var(--rosso) 66.6%) 1; }
+footer .wrap { padding-block: 44px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; }
+footer .wrap > * { min-width: 0; }
+footer .fcrest { width: 56px; height: 80px; }
+footer b { color: #fff; font: 800 1.4rem/1 var(--f-display); text-transform: uppercase; display: block; margin-bottom: 6px; }
+footer small { font-size: .88rem; line-height: 1.5; display: block; }
+footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+footer nav a { color: #fff; text-decoration: none; font: 700 1rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .06em; }
+footer nav a:hover { color: var(--azzurro); }
+@media (max-width: 760px) { footer .wrap { grid-template-columns: auto 1fr; } footer nav { grid-column: 1 / -1; } }
+
+.marquee { background: var(--tile); border-radius: 6px; }
+
+/* Hero entrance */
+.hero .tricolore, .hero h1 .l1, .hero h1 em, .hero p, .hero .cta { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero h1 .l1 { display: block; animation-delay: .1s; }
+.hero h1 em { animation-delay: .22s; }
+.hero p { animation-delay: .38s; }
+.hero .cta { animation-delay: .5s; }
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+.hero .stripes { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: repeating-linear-gradient(90deg, rgba(47,155,230,.0) 0 60px, rgba(47,155,230,.10) 60px 120px); -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 55%); mask-image: linear-gradient(90deg, #000 0%, transparent 55%); animation: sweep 1.6s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes sweep { from { transform: translateX(-30%); opacity: 0; } }
+.hero .year { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 120px; z-index: 1; font: 800 clamp(5rem, 16vw, 13rem)/.8 var(--f-display); font-style: italic; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.35); pointer-events: none; letter-spacing: -.02em; }
+@media (max-width: 700px) { .hero .year { display: none; } }
+
+/* Countdown */
+.countdown { display: flex; gap: 8px; flex-wrap: wrap; }
+.countdown div { min-width: 64px; padding: 10px 8px 8px; border-radius: 4px; background: var(--bg-alt); text-align: center; display: grid; gap: 4px; }
+.countdown b { font: 800 1.9rem/1 var(--f-display); color: var(--royal); font-variant-numeric: tabular-nums; }
+.countdown span { font: 700 .66rem/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.cdrow { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+/* Ticker band */
+.ticker { background: var(--azzurro); color: #fff; overflow: hidden; transform: rotate(-1.6deg); margin: 0 -20px; box-shadow: 0 10px 30px -18px rgba(9,25,60,.6); }
+.ticker .track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.ticker span { font: 800 clamp(1.4rem, 3vw, 2.1rem)/1 var(--f-display); font-style: italic; text-transform: uppercase; padding: 14px 0; white-space: nowrap; display: flex; align-items: center; }
+.ticker svg { width: 22px; height: 22px; margin: 0 26px; fill: #fff; flex: none; }
+
+.tickerwrap { overflow: hidden; padding-block: 50px 6px; }
+
+/* Slanted bands */
+.team-band, .club-band { clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%); padding-top: calc(clamp(60px, 8vw, 104px) + 30px); }
+
+/* Reveal: only below-the-fold blocks, only when JS runs */
+.js .rv { transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.js .rv.pre { opacity: 0; transform: translateY(30px); }
+
+/* Lightbox */
+.lb { position: fixed; inset: 0; z-index: 100; background: rgba(5,12,28,.95); display: grid; place-items: center; padding: max(60px, env(safe-area-inset-top, 0px)) var(--gr) max(60px, env(safe-area-inset-bottom, 0px)) var(--gl); }
+.lb[hidden] { display: none; }
+.lb img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+.lb button { position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; cursor: pointer; display: grid; place-items: center; }
+.lb button:hover { background: rgba(255,255,255,.25); }
+.lb button svg { width: 22px; height: 22px; }
+.lb .x { top: calc(14px + env(safe-area-inset-top, 0px)); right: calc(14px + env(safe-area-inset-right, 0px)); }
+.lb .prev { left: calc(12px + env(safe-area-inset-left, 0px)); top: 50%; translate: 0 -50%; }
+.lb .next { right: calc(12px + env(safe-area-inset-right, 0px)); top: 50%; translate: 0 -50%; }
+</style>
+<style>
+:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+</style>
+<link rel="icon" type="image/png" href="img/crest.png">
+<link rel="apple-touch-icon" href="img/crest.png">
+<meta property="og:title" content="FC Stella Azzurra">
+<meta property="og:description" content="Fussballverein aus Gümligen seit 1972. Forza Stella!">
+<meta property="og:image" content="img/team.jpg">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="crest" viewBox="0 0 265 431"><image href="img/crest.png" width="265" height="431"/></symbol>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM14 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="loc">Sportzentrum Füllerich · Gümligen · seit 1972</span>
+    <a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>stellaazzurra1972</a>
+  </div>
+</div>
+
+<header class="main" id="hdr">
+  <div class="wrap">
+    <a class="crest-link" href="#top" aria-label="FC Stella Azzurra, nach oben"><svg><use href="#crest"/></svg></a>
+    <a class="club-name" href="#top">FC Stella Azzurra<small>Gümligen · 1972</small></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menü" aria-expanded="false" aria-controls="mainnav">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="links" id="mainnav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#spiele">Spiele</a></li>
+        <li><a href="#tabelle">Tabelle</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#sponsoren">Sponsoren</a></li>
+        <li><a href="#verein">Verein</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-img"><img src="img/team.jpg" alt="Mannschaftsfoto FC Stella Azzurra, Saison 2026/27, auf dem Sportplatz Füllerich" fetchpriority="high"></div>
+    <div class="stripes" aria-hidden="true"></div>
+    <div class="year" aria-hidden="true">1972</div>
+    <div class="wrap">
+      <span class="tricolore" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h1><span class="l1">Forza</span><em>Stella</em></h1>
+      <p>Fussball mit italienischem Herz in Gümligen. Seit dem 1. Juli 1972 spielen wir in Blau, auf dem Füllerich und auswärts.</p>
+      <div class="cta">
+        <a class="btn btn-white" href="#spiele">Nächstes Spiel <svg><use href="#arrow"/></svg></a>
+        <a class="btn btn-line" href="#team">Zum Team</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="matchbar" id="spiele">
+    <div class="wrap">
+      <div class="matchgrid">
+        <div class="nextmatch" id="nextmatch">
+          <div class="mtop">
+            <span class="pill" id="mPill">Heimspiel</span>
+            <span class="mdate" id="mDate">So 25.10.2026 · 4. Liga, Gruppe 4</span>
+          </div>
+          <div class="versus">
+            <div class="team" id="mHome"><svg><use href="#crest"/></svg><span>Stella Azzurra</span></div>
+            <div class="kick" id="mKick">11:00<small>Anpfiff</small></div>
+            <div class="team r" id="mAway"><span>FC Galicia</span><span class="ph">G</span></div>
+          </div>
+          <div class="cdrow">
+            <div class="mplace"><svg><use href="#pin"/></svg><span id="mPlace">Sportzentrum Füllerich, Platz 1, Gümligen</span></div>
+            <div class="countdown" id="countdown" aria-label="Zeit bis zum Anpfiff"><div><b id="cdD">–</b><span>Tage</span></div><div><b id="cdH">–</b><span>Std</span></div><div><b id="cdM">–</b><span>Min</span></div><div><b id="cdS">–</b><span>Sek</span></div></div>
+          </div>
+          <div class="upnext" id="upnext"><span>Danach:</span> <b>Mi 28.10. · 19:30</b> <span>FC Rubigen – FC Stella Azzurra, Senioren 40+</span></div>
+        </div>
+        <div class="matchlinks">
+          <a href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36922" target="_blank" rel="noopener"><div><b>Tabelle 4. Liga</b><span>Rangliste &amp; Resultate, Gruppe 4</span></div><svg><use href="#ext"/></svg></a>
+          <a href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36923" target="_blank" rel="noopener"><div><b>Tabelle Senioren 40+</b><span>MFV, Gruppe 3</span></div><svg><use href="#ext"/></svg></a>
+          <a href="https://matchcenter.fvbj-afbj.ch/default.aspx?v=1377&amp;oid=6&amp;lng=1&amp;a=rr" target="_blank" rel="noopener"><div><b>Alle Resultate</b><span>Matchcenter FVBJ</span></div><svg><use href="#ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tickerwrap" aria-hidden="true"><div class="ticker"><div class="track"><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span><span>Forza Stella<svg><use href="#star"/></svg></span><span>Gümligen<svg><use href="#star"/></svg></span><span>Seit 1972<svg><use href="#star"/></svg></span><span>Füllerich<svg><use href="#star"/></svg></span><span>Blu e bianco<svg><use href="#star"/></svg></span></div></div></div>
+
+  <section class="sec" id="tabelle" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Live auf football.ch</p><h2>Tabelle</h2></div>
+      </div>
+      <div class="rv tables">
+        <a class="ttile" href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36922" target="_blank" rel="noopener" aria-label="Tabelle 4. Liga Gruppe 4 auf football.ch öffnen">
+          <div class="rows" aria-hidden="true"><i><span></span></i><i><span></span></i><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
+          <div><small>Erste Mannschaft</small><h3>4. Liga<br>Gruppe 4</h3><p>Rangliste, Resultate und Spielplan</p></div>
+          <span class="go"><svg><use href="#arrow"/></svg></span>
+        </a>
+        <a class="ttile alt" href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36923" target="_blank" rel="noopener" aria-label="Tabelle Senioren 40+ auf football.ch öffnen">
+          <div class="rows" aria-hidden="true"><i><span></span></i><i class="us"><span></span></i><i><span></span></i><i><span></span></i><i><span></span></i></div>
+          <div><small>Senioren</small><h3>40+<br>Gruppe 3</h3><p>MFV-Meisterschaft</p></div>
+          <span class="go"><svg><use href="#arrow"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="news">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Neu auf Instagram</p><h2>News</h2></div>
+        <a class="more" href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Alle Beiträge <svg><use href="#arrow"/></svg></a>
+      </div>
+      <div class="rv reels">
+        <a class="reel" href="https://www.instagram.com/p/DekTk7RRyTh/" target="_blank" rel="noopener">
+          <div class="cover"><img src="img/ig/DekTk7RRyTh.jpg" alt="Reel: Spieler mit Mikrofon unter Flutlicht" loading="lazy"><span class="pill tag">Matchday</span></div>
+          <h3>Morgen editieren wir die Tabelle</h3>
+          <p>Auswärts beim FC Stettlen 08, Anpfiff 18:00 Uhr. Forza Stella!</p>
+        </a>
+        <a class="reel" href="https://www.instagram.com/p/DebrET5OniM/" target="_blank" rel="noopener">
+          <div class="cover"><img src="img/ig/DebrET5OniM.jpg" alt="Reel: Mannschaft läuft auf den Platz" loading="lazy"><span class="pill tag">Behind the scenes</span></div>
+          <h3>Was unsere Jungs unter der Woche machen</h3>
+          <p>Am Wochenende Fussballer, unter der Woche … schau selbst.</p>
+        </a>
+        <a class="reel" href="https://www.instagram.com/p/DeWsx8AOeNK/" target="_blank" rel="noopener">
+          <div class="cover"><img src="img/ig/DeWsx8AOeNK.jpg" alt="Reel: Pressekonferenz-Parodie nach dem Spiel" loading="lazy"><span class="pill tag">Full time</span></div>
+          <h3>0:3 gegen Sternenberg</h3>
+          <p>Ein bitterer Nachmittag auf dem Füllerich. Wir lernen daraus und kommen stärker zurück.</p>
+        </a>
+        <a class="reel" href="https://www.instagram.com/p/DeTwwr0uQk6/" target="_blank" rel="noopener">
+          <div class="cover"><img src="img/ig/DeTwwr0uQk6.jpg" alt="Reel: Spieler beim Training mit Textüberlagerung" loading="lazy"><span class="pill tag">POV</span></div>
+          <h3>Gelaufen sind wir trotzdem</h3>
+          <p>Der Trainer sagt, es gibt Läufe, wenn wir nicht treffen.</p>
+        </a>
+        <a class="reel" href="https://www.instagram.com/p/DeROtx2us0N/" target="_blank" rel="noopener">
+          <div class="cover"><img src="img/ig/DeROtx2us0N.jpg" alt="Matchday-Grafik FC Stella Azzurra gegen FC Sternenberg" loading="lazy"><span class="pill tag">Matchday</span></div>
+          <h3>Heute geht's nicht zu Nonna</h3>
+          <p>Heimspiel gegen den FC Sternenberg am 11. Oktober auf dem Füllerich.</p>
+        </a>
+      </div>
+      <div class="insta-row">
+        <a class="btn btn-insta" href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>@stellaazzurra1972 folgen</a>
+        <p>Matchdays, Resultate und alles, was neben dem Platz passiert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec team-band" id="team">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Saison 2026/27</p><h2>Erste Mannschaft</h2></div>
+        <a class="more" href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36922" target="_blank" rel="noopener">4. Liga, Gruppe 4 <svg><use href="#arrow"/></svg></a>
+      </div>
+      <button class="groupshot" id="groupshot" aria-label="Mannschaftsfoto gross anzeigen">
+        <img src="img/team.jpg" alt="Mannschaftsfoto der ersten Mannschaft" loading="lazy">
+        <span class="cap"><span>FC Stella Azzurra · 4. Liga FVBJ</span><span>Sportzentrum Füllerich, September 2026</span></span>
+      </button>
+
+      <h3 class="squad-title">Trainerstab</h3>
+      <div class="squad" id="staff"></div>
+      <h3 class="squad-title">Kader</h3>
+      <div class="rv squad" id="squad"></div>
+
+      <h3 class="squad-title">Unsere Teams</h3>
+      <div class="rv teams2">
+        <a class="tcard" href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36922" target="_blank" rel="noopener">
+          <div class="tv"><img src="img/team.jpg" alt="" loading="lazy"></div>
+          <div class="tb"><h3>4. Liga</h3><p>Erste Mannschaft · FVBJ, Gruppe 4</p><span class="more">Tabelle &amp; Spiele <svg><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="tcard" href="https://club.football.ch/de/club/teams/team/resultate-und-rangliste/&amp;v=1377&amp;t=36923" target="_blank" rel="noopener">
+          <div class="tv empty">Foto folgt</div>
+          <div class="tb"><h3>Senioren 40+</h3><p>MFV, Gruppe 3</p><span class="more">Tabelle &amp; Spiele <svg><use href="#arrow"/></svg></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="sponsoren">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Grazie mille</p><h2>Sponsoren &amp; Partner</h2></div>
+      </div>
+      <div class="marquee rv" aria-hidden="true"><div class="track" id="marquee"></div></div>
+      <p class="tier-label">Sponsoren</p>
+      <div class="rv logos s" id="logosS"></div>
+      <p class="tier-label">Co-Sponsoren</p>
+      <div class="logos c" id="logosC"></div>
+      <p class="tier-label">Partner</p>
+      <div class="logos p" id="logosP"></div>
+      <div class="rv becomesponsor">
+        <div>
+          <h3>Sponsor werden</h3>
+          <p>Bande, Trikot, Matchball oder Gönnerbeitrag: Mit deiner Unterstützung bleibt der Ball auf dem Füllerich im Spiel. Wir finden das passende Paket für dein Unternehmen.</p>
+        </div>
+        <a class="btn btn-white" href="#kontakt">Kontakt aufnehmen <svg><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec club-band" id="verein">
+    <svg class="bgcrest" aria-hidden="true"><use href="#crest"/></svg>
+    <div class="wrap club-grid">
+      <div class="story">
+        <p class="kicker">Il nostro club</p>
+        <h2>Der Verein</h2>
+        <p>Der FC Stella Azzurra wurde am 1. Juli 1972 in Gümligen gegründet. Der Name heisst „blauer Stern", und Blau ist bis heute unsere Farbe. Wir sind Mitglied im Fussballverband Bern/Jura und im Kreisverband MFV.</p>
+        <p>Heute spielen bei uns eine Mannschaft in der 4. Liga und die Senioren 40+. Gespielt wird im Sportzentrum Füllerich.</p>
+        <div class="stats">
+          <div><b>1972</b><span>Gegründet</span></div>
+          <div><b>2</b><span>Teams</span></div>
+          <div><b>10345</b><span>Vereinsnr. SFV</span></div>
+        </div>
+        <div class="places">
+          <div><b>Sportzentrum Füllerich</b><span>Füllerich 1 &amp; 2, Gümligen</span></div>
+          <div><b>Schulhaus Moos</b><span>Gümligen</span></div>
+        </div>
+      </div>
+      <div class="rv board">
+        <h3>Vorstand</h3>
+        <div class="row"><span>Finanzchef</span><b>Marco Spinozzi</b></div>
+        <div class="row"><span>Spielbetrieb</span><b>Roberto Buccassi</b></div>
+        <div class="row"><span>Spielbetrieb (Stv.)</span><b>Luca Lisena</b></div>
+        <div class="row"><span>Kinder- &amp; Jugendschutz</span><b>Luca Lisena</b></div>
+        <div class="row"><span>Inklusion (Spirit of Football)</span><b>Luca Lisena</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kontakt">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="kicker">Kontakt</p><h2>Mitspielen oder unterstützen?</h2></div>
+      </div>
+      <div class="rv contact">
+        <div>
+          <h3>Adresse</h3>
+          <p>FC Stella Azzurra<br>Hofackerweg 16a<br>Postfach 233<br>3073 Gümligen</p>
+        </div>
+        <div>
+          <h3>E-Mail</h3>
+          <p id="mail">vorstand@fcstellaazzurra.ch</p>
+          <p class="sub">Für Probetraining, Sponsoring und alle Fragen an den Vorstand.</p>
+          <button class="copy" id="copyMail" type="button">Adresse kopieren</button>
+        </div>
+        <div>
+          <h3>Instagram</h3>
+          <p><a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">@stellaazzurra1972</a></p>
+          <p class="sub">Am schnellsten erreichst du uns per Direktnachricht.</p>
+        </div>
+      </div>
+      <div class="docs">
+        <a href="https://club.football.ch/fcstellaazzurra" target="_blank" rel="noopener"><svg><use href="#doc"/></svg>Aufnahmegesuch Spieler(innen)</a>
+        <a href="https://club.football.ch/fcstellaazzurra" target="_blank" rel="noopener"><svg><use href="#doc"/></svg>Vereinsstatuten</a>
+        <a href="https://club.football.ch/fcstellaazzurra" target="_blank" rel="noopener"><svg><use href="#doc"/></svg>Sport-Kollektion</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="fcrest" aria-hidden="true"><use href="#crest"/></svg>
+    <div>
+      <b>FC Stella Azzurra</b>
+      <small>Hofackerweg 16a · Postfach 233 · 3073 Gümligen<br>Mitglied FVBJ · Kreisverband MFV · © 2026</small>
+    </div>
+    <nav aria-label="Fusszeile">
+      <a href="#spiele">Spiele</a><a href="#news">News</a><a href="#team">Team</a><a href="#sponsoren">Sponsoren</a><a href="https://www.instagram.com/stellaazzurra1972/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Bildansicht">
+  <img id="lbImg" alt="">
+  <button class="x" id="lbX" aria-label="Schliessen"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <button class="prev" id="lbPrev" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <button class="next" id="lbNext" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+</div>
+
+<script>
+(function () {
+  /* ---------- Spielplan: hier neue Spiele eintragen ---------- */
+  var FIXTURES = [
+    { date: "2026-10-25T11:00", home: "FC Stella Azzurra", away: "FC Galicia", comp: "4. Liga, Gruppe 4", place: "Sportzentrum Füllerich, Platz 1, Gümligen" },
+    { date: "2026-10-28T19:30", home: "FC Rubigen", away: "FC Stella Azzurra", comp: "Senioren 40+, Gruppe 3", place: "Hunzigenrüti, Hauptplatz, Rubigen" }
+  ];
+
+  /* ---------- Sponsoren: [Name, Website, Logo in img/sp/ (oder null = Schriftzug), Zusatz, Hintergrund für helle Logos] ---------- */
+  var SPONSORS = {
+    s: [
+      ["Groupe Egli", "https://groupe-egli.ch/", "egli.svg"],
+      ["R4 Raumwelten AG", "https://www.r-4.ch/", "r4.png", "Raumwelten"],
+      ["Schönisol AG", "https://www.schoenisol.ch/", "schoenisol.png", null, "#1d2026"],
+      ["Art-Böden AG", "https://www.art-boeden.ch/", "artboeden.png"],
+      ["Gerber AG", "https://gerberelektro.ch/", "gerber.png", "Elektro- & Energietechnik"],
+      ["Sanare", "https://www.sanare.ch/", "sanare.png"],
+      ["appliedtec GmbH", "https://www.appliedtec.ch", null, "Database Engineering"],
+      ["PGTech AG", "https://www.pgtech.ch/", "pgtech.png"],
+      ["L'Osteria Belp", "https://www.losteriabelp.ch/", "osteria.png"],
+      ["Mundiger Pizza & Burger Huus", "https://mundigerhuus.ch/", "mundiger.png", null, "#141414"],
+      ["Seeland Job AG", "https://www.seelandjob.ch/de/", "seeland.png"],
+      ["Piazza Vittoria", "https://www.piazzavittoria.ch", "piazza.png"],
+      ["Kebap King", "https://kebap-king.ch/", "kebapking.png"],
+      ["Zigerlig Bautrocknung AG", "https://www.zigerlig.ch/", "zigerlig.png"],
+      ["Ristorante Beau Rivage", "https://beau-rivage-thun.ch/", "beaurivage.png"]
+    ],
+    c: [
+      ["Restaurant National La Favorita", "https://www.restaurant-favorita.ch", "favorita.png", null, "#1b1b1b"],
+      ["Frimasa Kaminbau GmbH", "https://frimasa.ch/", "frimasa.png"],
+      ["Gesundheitspraxis Ursula Merz", "https://www.ursulamerz.ch", "merz.png"],
+      ["Reimal AG", "https://reimal.ch", "reimal.png"]
+    ],
+    p: [
+      ["Intersport Friedrich", "https://www.friedrich-sport.ch/", "friedrich.png"]
+    ]
+  };
+
+  var DAYS = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  // Next match: first fixture that hasn't kicked off yet
+  var now = new Date();
+  var upcoming = FIXTURES.filter(function (f) { return new Date(f.date) > now; });
+  var crestSvg = '<svg><use href="#crest"/></svg>';
+  function side(name) { return name === "FC Stella Azzurra" ? crestSvg + "<span>Stella Azzurra</span>" : "<span>" + esc(name) + '</span><span class="ph">' + esc(name.replace(/^FC\s+/, "").charAt(0)) + "</span>"; }
+  function sideL(name) { return name === "FC Stella Azzurra" ? crestSvg + "<span>Stella Azzurra</span>" : '<span class="ph">' + esc(name.replace(/^FC\s+/, "").charAt(0)) + "</span><span>" + esc(name) + "</span>"; }
+  if (upcoming.length) {
+    var f = upcoming[0], d = new Date(f.date), home = f.home === "FC Stella Azzurra";
+    document.getElementById("mPill").textContent = home ? "Heimspiel" : "Auswärts";
+    document.getElementById("mPill").className = "pill" + (home ? "" : " away");
+    document.getElementById("mDate").textContent = DAYS[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "." + d.getFullYear() + " · " + f.comp;
+    document.getElementById("mKick").innerHTML = pad(d.getHours()) + ":" + pad(d.getMinutes()) + "<small>Anpfiff</small>";
+    document.getElementById("mHome").innerHTML = sideL(f.home);
+    document.getElementById("mAway").innerHTML = side(f.away);
+    document.getElementById("mPlace").textContent = f.place;
+    var n = upcoming[1], un = document.getElementById("upnext");
+    if (n) { var nd = new Date(n.date); un.innerHTML = "<span>Danach:</span> <b>" + DAYS[nd.getDay()] + " " + pad(nd.getDate()) + "." + pad(nd.getMonth() + 1) + ". · " + pad(nd.getHours()) + ":" + pad(nd.getMinutes()) + "</b> <span>" + esc(n.home) + " – " + esc(n.away) + ", " + esc(n.comp) + "</span>"; }
+    else un.hidden = true;
+  } else {
+    document.getElementById("nextmatch").innerHTML = '<div class="mtop"><span class="pill">Spielplan</span></div><div class="team">Nächste Spiele auf football.ch</div><p class="mplace" style="margin:0">Die kommenden Termine findest du rechts im Spielplan.</p>';
+  }
+
+  // Sponsors
+  function logoInner(sp, inMarquee) {
+    if (!sp[2]) return '<span class="wm">' + esc(sp[0]) + (sp[3] && !inMarquee ? "<small>" + esc(sp[3]) + "</small>" : "") + "</span>";
+    var img = '<img src="img/sp/' + sp[2] + '" alt="' + esc(sp[0]) + '" loading="lazy">';
+    if (sp[2] === "gerber.png" || sp[2] === "r4.png") return '<span class="combo">' + img + '<span class="wm" style="text-align:left">' + esc(sp[0].replace(" Raumwelten AG", "")) + (sp[3] && !inMarquee ? "<small>" + esc(sp[3]) + "</small>" : "") + "</span></span>";
+    return img;
+  }
+  function logoLink(sp, inMarquee) {
+    var a = document.createElement("a");
+    a.className = inMarquee ? "" : "logo"; a.href = sp[1]; a.target = "_blank"; a.rel = "noopener"; a.title = sp[0];
+    if (sp[4]) { a.classList.add("dark"); a.style.background = sp[4]; }
+    a.innerHTML = logoInner(sp, inMarquee);
+    return a;
+  }
+  var mq = document.getElementById("marquee"), allSp = SPONSORS.s.concat(SPONSORS.c, SPONSORS.p);
+  Object.keys(SPONSORS).forEach(function (tier) {
+    var el = document.getElementById("logos" + tier.toUpperCase());
+    SPONSORS[tier].forEach(function (sp) { el.appendChild(logoLink(sp)); });
+  });
+  [0, 1].forEach(function (copy) {
+    allSp.forEach(function (sp) { var a = logoLink(sp, true); if (copy) a.tabIndex = -1; mq.appendChild(a); });
+  });
+
+  // Squad
+  var staff = ["img/p-12.jpg", "img/p-27.jpg"], players = [];
+  for (var i = 5; i <= 28; i++) { var src = "img/p-" + pad(i) + ".jpg"; if (staff.indexOf(src) < 0) players.push(src); }
+  function pcard(src, label, sub, num, list, idx, cls) {
+    var b = document.createElement("button");
+    b.className = "pcard" + (cls ? " " + cls : ""); b.type = "button";
+    b.setAttribute("aria-label", label + ", Foto gross anzeigen");
+    b.innerHTML = '<div class="ph"><img src="' + src + '" alt="' + label + '" loading="lazy" decoding="async">' + (num ? '<span class="num">' + num + "</span>" : "") + '</div><div class="info"><b>' + label + "</b><span>" + sub + "</span></div>";
+    b.addEventListener("click", function () { openLb(list, idx); });
+    return b;
+  }
+  var stEl = document.getElementById("staff");
+  staff.forEach(function (s, i) { stEl.appendChild(pcard(s, "Name folgt", "Trainerstab", "", staff, i, "staff")); });
+  var sqEl = document.getElementById("squad");
+  players.forEach(function (s, i) { sqEl.appendChild(pcard(s, "Name folgt", "Position folgt", "", players, i)); });
+
+  // Countdown to kick-off
+  if (upcoming.length) {
+    var ko = new Date(upcoming[0].date).getTime();
+    var cdEls = ["cdD", "cdH", "cdM", "cdS"].map(function (id) { return document.getElementById(id); });
+    (function tick() {
+      var ms = Math.max(0, ko - Date.now()), t = Math.floor(ms / 1000);
+      var v = [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60];
+      cdEls.forEach(function (el, i) { el.textContent = i ? pad(v[i]) : v[i]; });
+      if (ms > 0) setTimeout(tick, 1000);
+    })();
+  } else { var cdx = document.getElementById("countdown"); if (cdx) cdx.hidden = true; }
+
+  // Reveal on scroll (only blocks that start below the fold)
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js");
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rv").forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+  }
+
+  // Lightbox
+  var lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), L = [], I = 0;
+  function show() { lbImg.src = L[I]; }
+  function openLb(list, i) { L = list; I = i; show(); lb.hidden = false; document.getElementById("lbX").focus(); document.getElementById("lbPrev").hidden = document.getElementById("lbNext").hidden = list.length < 2; }
+  function closeLb() { lb.hidden = true; }
+  function step(d) { I = (I + d + L.length) % L.length; show(); }
+  document.getElementById("groupshot").addEventListener("click", function () { openLb(["img/team.jpg"], 0); });
+  document.getElementById("lbX").onclick = closeLb;
+  document.getElementById("lbPrev").onclick = function () { step(-1); };
+  document.getElementById("lbNext").onclick = function () { step(1); };
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) { if (lb.hidden) return; if (e.key === "Escape") closeLb(); if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
+  var sx = null;
+  lb.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); sx = null; });
+
+  // Menu
+  var hdr = document.getElementById("hdr"), mb = document.getElementById("menuBtn");
+  mb.addEventListener("click", function () { var o = hdr.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
+  document.querySelectorAll("#mainnav a").forEach(function (a) { a.addEventListener("click", function () { hdr.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); }); });
+
+  // Copy e-mail
+  document.getElementById("copyMail").addEventListener("click", function () {
+    var btn = this, t = document.getElementById("mail").textContent;
+    function done(ok) { btn.textContent = ok ? "Kopiert" : "Bitte markieren und kopieren"; setTimeout(function () { btn.textContent = "Adresse kopieren"; }, 2200); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, function () { selectMail(); done(false); });
+    else { selectMail(); done(false); }
+    function selectMail() { var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+})();
+</script>
+</body>
+</html>
